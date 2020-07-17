@@ -1,0 +1,24 @@
+@import 'fonts';
+@import 'colors';
+@import 'landingPage';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+
+    .wrapper {
+        width: 100%;
+        max-width: 1920px;
+    }
+}
