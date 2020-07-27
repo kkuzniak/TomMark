@@ -1,6 +1,7 @@
 @import 'fonts';
 @import 'colors';
 @import 'landingPage';
+@import 'aboutPage';
 
 * {
     margin: 0;
@@ -8,8 +9,11 @@
     box-sizing: border-box;
 }
 
-html, body {
+.w-100 {
     width: 100%;
+}
+
+.h-100 {
     height: 100%;
 }
 
@@ -19,6 +23,9 @@ body {
 
     .wrapper {
         width: 100%;
+        height: 100%;
         max-width: 1920px;
+        max-height: 840px;
+        margin: auto 0px;
     }
 }
