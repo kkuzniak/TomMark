@@ -1,36 +1,56 @@
 @font-face {
-    src: '../fonts/JuxtaSansMono-Light.otf';
-    font-family: 'JuxtaSansMono-Light';
+    src: url("./fonts/MonoSpecLight.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'MonoSpec-Light';
 }
 @font-face {
-    src: '../fonts/JuxtaSansMono-Thin.otf';
-    font-family: 'JuxtaSansMono-Thin';
+    src: url("./fonts/MonoSpec.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'MonoSpec';
 }
 @font-face {
-    src: '../fonts/JuxtaSansMono-Regular.otf';
-    font-family: 'JuxtaSansMono-Regular';
+    src: url("./fonts/MonoSpecMedium.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'MonoSpec-Medium';
 }
 @font-face {
-    src: '../fonts/JuxtaSansMono-Medium.otf';
-    font-family: 'JuxtaSansMono-Medium';
+    src: url("./fonts/MonoSpecSemiBold.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'MonoSpec-SemiBold';
 }
 @font-face {
-    src: '../fonts/JuxtaSansMono-SemiBold.otf';
-    font-family: 'JuxtaSansMono-SemiBold';
+    src: url("./fonts/MonoSpecBold.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'MonoSpec-Bold';
 }
 @font-face {
-    src: '../fonts/JuxtaSansMono-Bold.otf';
-    font-family: 'JuxtaSansMono-Bold';
+    src: url("./fonts/Love.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Love';
 }
-@font-face {
-    src: '../fonts/JuxtaSansMono-Black.otf';
-    font-family: 'JuxtaSansMono-Black';
+
+.mono300 {
+    font-family: 'MonoSpec-Light';
 }
-@font-face {
-    src: '../fonts/JuxtaSansMono-ExtraBlack.otf';
-    font-family: 'JuxtaSansMono-ExtraBlack';
+
+.mono400 {
+    font-family: 'MonoSpec';
 }
-@font-face {
-    src: '../fonts/QirateMono.otf';
-    font-family: 'QirateMono';
+
+.mono500 {
+    font-family: 'MonoSpec-Medium';
+}
+
+.mono600 {
+    font-family: 'MonoSpec-SemiBold';
+}
+
+.mono700 {
+    font-family: 'MonoSpec-Bold';
 }
