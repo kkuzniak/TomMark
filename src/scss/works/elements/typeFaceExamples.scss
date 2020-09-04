@@ -1,0 +1,118 @@
+.typeFaceExamples {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 110px;
+    padding-bottom: 216px;
+
+    &__sideText {
+        position: absolute;
+        left: 52px;
+        bottom: 224px; 
+        color: $c-grey-2;
+        font-size: 16px;
+
+        @media (max-width: 1650px) {
+            display: none;
+        }
+    }
+
+    &__wrapper {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 50px;
+        display: grid;
+        grid-template-columns: minmax(228px, 730px) minmax(50px, 160px) 390px;
+
+        &__content {
+            align-self: flex-end;
+            // margin-bottom: 8px;
+
+            &__row {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 20% 80%;
+                border-bottom: 2px solid $c-grey-1;
+
+                @media (max-width: 1000px) {
+                    grid-template-columns: 100%;
+                    grid-template-rows: auto auto;
+                }
+
+                &:not(:last-of-type) {
+                    margin-bottom: 66px;   
+                }
+                
+                &:nth-of-type(4) &__exampleText  {
+                    line-height: 180%;
+                }
+
+                &__type {
+                    writing-mode: vertical-rl;
+                    text-orientation: mixed;
+                    font-size: 15px;
+                    justify-self: flex-start;
+                    margin-bottom: 22px;
+                    line-height: 160%;
+                    display: flex;
+                    flex-direction: column;
+
+                    @media (max-width: 1000px) {
+                        writing-mode: initial;
+                        flex-direction: row;
+
+                        span:first-of-type {
+                            margin-right: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__imageSection {
+            position: relative;
+            overflow: hidden;
+
+            &__image {
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 25%;
+                transform: translateX(-25%);
+            }
+
+            &__desc {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-30%);
+                display: grid;
+                grid-template-rows: auto auto auto;
+                grid-row-gap: 14px;
+                grid-template-columns: auto;
+
+                @media (max-width: 1336px) {
+                    right: 18px;
+                }
+                
+                @media (max-width: 1158px) {
+                    right: 6px;
+                }
+                @media (max-width: 1072px) {
+                    right: -3px;
+                }
+                @media (max-width: 1000px) {
+                    display: none;
+                }
+                
+                &__text {
+                    writing-mode: vertical-rl;
+                    text-orientation: mixed;
+                    font-size: 13px;
+                    line-height: 180%;
+                }
+            }
+        }
+    }
+}

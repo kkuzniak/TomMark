@@ -1,0 +1,78 @@
+.doubleImageVisual {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 40px;
+
+    &__container {
+        width: 100%;
+        max-width: 1645px;
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(595px, 1470px) minmax(20px, 55px) 110px;
+        grid-template-rows: auto;
+
+        &__imageSection {
+            width: 100%;
+            height: 1080px;
+            position: relative;
+            display: grid;
+            grid-template-rows: 100%;
+            grid-column-gap: 20px;
+
+            &__imageWrapper {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+
+                img {
+                    height: 105%;
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+
+        &__descriptionSection {
+            height: 70%;
+            align-self: center;
+            grid-column: 3 / 4;
+
+            &__header {
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: auto;
+                margin-left: 16px;
+                grid-column-gap: 10px;
+
+                &__text {
+                    text-orientation: mixed;
+                    writing-mode: vertical-rl;
+                    transform: rotate(180deg);
+                    font-size: 16px;
+
+                    &:nth-of-type(1) {
+                        grid-row: 1/3;
+                        grid-column: 1/2;
+                        align-self: flex-start;
+                    }
+                    
+                    &:nth-of-type(2) {
+                        font-size: 35px;
+                        align-self: flex-start;
+                        grid-column: 2/3;
+                    }
+                    &:nth-of-type(3) {
+                        align-self: flex-end;
+                        grid-column: 2/3;
+                        padding-right: 6px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+@font-face {
+    src: url("./fonts/AcuminLight.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Acumin-Light';
+}
+@font-face {
+    src: url("./fonts/Acumin.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Acumin';
+}
+@font-face {
+    src: url("./fonts/AcuminSemiBold.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Acumin-SemiBold';
+}
+@font-face {
+    src: url("./fonts/AcuminBold.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Acumin-Bold';
+}
+
+.font-acumin {
+    &300 {
+        font-family: 'Acumin-Light';
+    }
+    &400 {
+        font-family: 'Acumin';
+    }
+    &600 {
+        font-family: 'Acumin-SemiBold';
+    }
+    &700 {
+        font-family: 'Acumin-Bold';
+    }
+}

@@ -1,0 +1,48 @@
+@font-face {
+    src: url("./fonts/MonoSpecLight.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'MonoSpec-Light';
+}
+@font-face {
+    src: url("./fonts/MonoSpec.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'MonoSpec';
+}
+@font-face {
+    src: url("./fonts/MonoSpecMedium.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'MonoSpec-Medium';
+}
+@font-face {
+    src: url("./fonts/MonoSpecSemiBold.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'MonoSpec-SemiBold';
+}
+@font-face {
+    src: url("./fonts/MonoSpecBold.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'MonoSpec-Bold';
+}
+
+.font-mono {
+    &300 {
+        font-family: 'MonoSpec-Light';
+    }
+    &400 {
+        font-family: 'MonoSpec';
+    }
+    &500 {
+        font-family: 'MonoSpec-Medium';
+    }
+    &600 {
+        font-family: 'MonoSpec-SemiBold';
+    }
+    &700 {
+        font-family: 'MonoSpec-Bold';
+    }
+}

@@ -1,0 +1,104 @@
+$c-black: #111;
+$c-black-2: #231f20;
+$c-white: #FFF;
+$c-grey-1: #D5D5D5;
+$c-grey-2: #B3B3B3;
+$c-grey-3: #808080;
+$c-grey-4: #4D4D4D;
+// $c-grey-5: #606060
+$c-red: #ED1C24;
+$c-blue-1: #8fd0ea;
+$c-blue-2: #002f62;
+$c-green-1: #2ebbac;
+$c-green-2: #75b7a3;
+$c-green-3: #2EB994;
+$c-green-4: #056037;
+$c-green-5: #05331f;
+$c-yellow-1: #ffffea;
+
+.c-black {
+    color: $c-black;
+    &-2 {
+        color: $c-black-2;
+    }
+}
+.c-white {
+    color: $c-white;
+}
+.c-grey- {
+    &1 {color: $c-grey-1;}
+    &2 {color: $c-grey-2;}
+    &3 {color: $c-grey-3;}
+    &4 {color: $c-grey-4;}
+}
+.c-red {
+    color: $c-red;
+}
+.c-blue- {
+    &1 {color: $c-blue-1;}
+    &2 {color: $c-blue-2;}
+}
+.c-green- {
+    &1 {color: $c-green-1;}
+    &2 {color: $c-green-2;}
+    &3 {color: $c-green-3;}
+    &4 {color: $c-green-4;}
+}
+.c-yellow- {
+    &1 {color: $c-yellow-1;}
+}
+.justify {
+    &--flex-end {
+        justify-content: flex-end;
+    }
+    &--flex-start {
+        justify-content: flex-start;
+    }
+    &-self {
+        &--flex-end {
+            justify-self: flex-end;
+        }
+        &--flex-start {
+            justify-self: flex-start;
+        }
+    }
+}
+.align {
+    &--flex-end {
+        align-items: flex-end;
+    }
+    &--flex-start {
+        align-items: flex-start;
+    }
+    &-self {
+        &--flex-end {
+            align-self: flex-end;
+        }
+        &--flex-start {
+            align-self: flex-start;
+        }
+    }
+}
+
+.f-size {
+    &13 {font-size: 13px;}
+    &14 {font-size: 14px;}
+    &16 {font-size: 16px;}
+    &17 {font-size: 17px;}
+    &18 {font-size: 18px;}
+    &20 {font-size: 20px;}
+    &24 {font-size: 24px;}
+    &26 {font-size: 26px;}
+    &28 {font-size: 28px;}
+    &30 {font-size: 30px;}
+    &32 {font-size: 32px;}
+    &38 {font-size: 38px;}
+    &42 {font-size: 42px;}
+    &44 {font-size: 44px;}
+    &50 {font-size: 50px;}
+    &54 {font-size: 54px;}
+    &56 {font-size: 56px;}
+    &84 {font-size: 84px;}
+    &92 {font-size: 92px;}
+    &106 {font-size: 106px;}
+}

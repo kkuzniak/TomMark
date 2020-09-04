@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development",
-    "start:open": "webpack-dev-server --mdoe development --open"
+    "start": "webpack-dev-server --mode development --host 0.0.0.0",
+    "start:open": "webpack-dev-server --mode development --open"
   },
   "author": "Kacper Kuźniak",
   "license": "ISC",
@@ -28,5 +28,7 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "swup": "^2.0.11"
+  }
 }

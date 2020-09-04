@@ -4,25 +4,64 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;  
 
 module.exports = {
-    entry: ['./src/js/app.js', './src/scss/app.scss'],
+    entry: {
+        'landing': ['./src/js/app.js', './src/js/landing.js', './src/scss/pages/landing.scss'],
+        'about': ['./src/scss/pages/about.scss'],
+        'contact': ['./src/js/contact.js', './src/scss/pages/contact.scss'],
+        'weronikaSurdacka': ['./src/js/weronikaSurdacka.js', './src/scss/works/weronikaSurdacka.scss'],
+        'royalStar': ['./src/js/royalStar.js', './src/scss/works/royalStar.scss'],
+        'frontlineClub': ['./src/js/frontlineClub.js', './src/scss/works/frontlineClub.scss'],
+        'pinaColada': ['./src/js/pinaColada.js', './src/scss/works/pinaColada.scss']
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.js'
+        filename: 'js/[name].js'
     },
     devServer: {
-        contentBase: './dist'
+        contentBase: './dist',
     },
     plugins: [
         new HTMLWebpackPLugin({
             filename: 'index.html',
             template: './src/index.html',
-            minify: false
+            // minify: false,
+            chunks: ['landing'],
         }),
         new HTMLWebpackPLugin({
             filename: 'about.html',
             template: './src/about.html',
             minify: false,
-            inject: false
+            chunks: ['about'],
+        }),
+        new HTMLWebpackPLugin({
+            filename: 'contact.html',
+            template: './src/contact.html',
+            minify: false,
+            chunks: ['contact'],
+        }),
+        new HTMLWebpackPLugin({
+            filename: 'weronika_surdacka.html',
+            template: './src/weronika_surdacka.html',
+            minify: false,
+            chunks: ['weronikaSurdacka'],
+        }),
+        new HTMLWebpackPLugin({
+            filename: 'royal_star.html',
+            template: './src/royal_star.html',
+            minify: false,
+            chunks: ['royalStar'],
+        }),
+        new HTMLWebpackPLugin({
+            filename: 'frontline_club.html',
+            template: './src/frontline_club.html',
+            minify: false,
+            chunks: ['frontlineClub'],
+        }),
+        new HTMLWebpackPLugin({
+            filename: 'pina_colada.html',
+            template: './src/pina_colada.html',
+            minify: false,
+            chunks: ['pinaColada'],
         }),
         new CopyPlugin({ 
             patterns: [
@@ -37,6 +76,9 @@ module.exports = {
                 },
                 {
                     from: './src/videos', to: './videos'
+                },
+                {
+                    from: './src/favicon', to: './favicon'
                 }
             ]
         }),
