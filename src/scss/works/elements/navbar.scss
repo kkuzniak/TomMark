@@ -1,0 +1,54 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    max-width: 1650px;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 999;
+    pointer-events: none;
+    transition: visibility 300ms ease, opacity 300ms ease;
+
+    &--hidden {
+        visibility: hidden;
+        opacity: 0;
+
+        .navbar__navigation, .navbar__socials {
+            transform: translateX(20%);
+        }
+
+        .navbar__goBackButton {
+            transform: translateY(20%);
+        }
+    }
+
+    > * {
+        position: absolute;
+        pointer-events: all;
+        transition: transform 300ms ease;
+    }
+
+    &__navigation {
+        top: 180px;
+        right: 55px;
+
+        @media (max-width: 1020px) {
+            top: 80px;
+        }
+    }
+
+    &__socials {
+        bottom: 120px;
+        right: 55px;
+
+        @media (max-width: 1020px) {
+            bottom: 80px;
+        }
+    }
+
+    &__goBackButton {
+        top: 190px;
+        left: 50px;
+    }
+}

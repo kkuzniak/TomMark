@@ -1,5 +1,5 @@
-import WorkPage from './workPage';
+// import WorkPage from './workPage';
 
-document.addEventListener('DOMContentLoaded', () => {
-    const workPage = new WorkPage();
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     const workPage = new WorkPage();
+// });

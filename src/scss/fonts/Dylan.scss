@@ -1,0 +1,39 @@
+@font-face {
+    src: url("./fonts/DylanThin.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Dylan-Thin';
+}
+@font-face {
+    src: url("./fonts/DylanLight.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Dylan-Light';
+}
+@font-face {
+    src: url("./fonts/Dylan.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Dylan';
+}
+@font-face {
+    src: url("./fonts/DylanBold.otf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Dylan-Bold';
+}
+
+.font-dylan {
+    &100 {
+        font-family: 'Dylan-Thin'
+    }
+    &300 {
+        font-family: 'Dylan-Light';
+    }
+    &400 {
+        font-family: 'Dylan';
+    }
+    &700 {
+        font-family: 'Dylan-Bold';
+    }
+}

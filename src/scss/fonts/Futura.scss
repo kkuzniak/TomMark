@@ -1,0 +1,30 @@
+@font-face {
+    src: url("./fonts/Futura.ttf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Futura';
+}
+@font-face {
+    src: url("./fonts/FuturaBold.ttf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Futura-Bold';
+}
+@font-face {
+    src: url("./fonts/FuturaHeavy.ttf");
+    font-style: normal;
+    font-weight: normal;
+    font-family: 'Futura-Heavy';
+}
+
+.font-futura {
+    &400 {
+        font-family: 'Futura';
+    }
+    &700 {
+        font-family: 'Futura-Bold';
+    }
+    &900 {
+        font-family: 'Futura-Heavy';
+    }
+}
