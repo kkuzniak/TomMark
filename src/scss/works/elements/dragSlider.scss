@@ -210,8 +210,12 @@
 
             input {
                 width: 180px;
-                margin-bottom: 28px;
+                margin-bottom: 12px;
                 -webkit-appearance: none;
+                background: none;
+                outline: none;
+                padding: 16px 0;
+                cursor: pointer;
 
                 &::-webkit-slider-thumb {
                     -webkit-appearance: none; // needed again for Chrome & Safari
@@ -223,8 +227,8 @@
                 }
                 
                 &::-moz-range-thumb {
-                    width: 31px;
-                    height: 31px;
+                    width: 22px;
+                    height: 22px;
                     margin: -15px 0  0;
                     border-radius: 50%;
                     cursor: pointer;
@@ -243,6 +247,7 @@
                   height: 2px;
                   cursor: pointer;
                   // background: #b2b2b2;
+                  position: relative;
                 }
               
                 &::-moz-range-track {

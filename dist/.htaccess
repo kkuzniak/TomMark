@@ -1,0 +1,16 @@
+Options +SymLinksIfOwnerMatch 
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^contact$ contact.html
+RewriteRule ^about$ about.html
+
+RewriteRule ^work/weronika-surdacka$ index.html
+RewriteRule ^work/royal-star$ landing_2.html
+RewriteRule ^work/frontline-club$ landing_3.html
+RewriteRule ^work/pina-colada$ landing_4.html
+RewriteRule ^work/weronika-surdacka/preview$ weronika_surdacka.html
+RewriteRule ^work/royal-star/preview$ royal_star.html
+RewriteRule ^work/frontline-club/preview$ frontline_club.html
+RewriteRule ^work/pina-colada/preview$ pina_colada.html
