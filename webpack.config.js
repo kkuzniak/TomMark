@@ -1,7 +1,8 @@
 const path = require('path');
 const HTMLWebpackPLugin = require('html-webpack-plugin');
+// const HtmlInsertWebpackPlugin = require('html-webpack-insert-text-plugin').default;
 const CopyPlugin = require('copy-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;  
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 module.exports = {
     entry: {
@@ -24,44 +25,72 @@ module.exports = {
         new HTMLWebpackPLugin({
             filename: 'index.html',
             template: './src/index.html',
-            // minify: false,
+            minify: true,
             chunks: ['landing'],
+            inject: false
+        }),
+        new HTMLWebpackPLugin({
+            filename: 'landing_2.html',
+            template: './src/landing_2.html',
+            minify: true,
+            chunks: ['landing'],
+            inject: false
+        }),
+        new HTMLWebpackPLugin({
+            filename: 'landing_3.html',
+            template: './src/landing_3.html',
+            minify: true,
+            chunks: ['landing'],
+            inject: false
+        }),
+        new HTMLWebpackPLugin({
+            filename: 'landing_4.html',
+            template: './src/landing_4.html',
+            minify: true,
+            chunks: ['landing'],
+            inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'about.html',
             template: './src/about.html',
-            minify: false,
+            minify: true,
             chunks: ['about'],
+            inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'contact.html',
             template: './src/contact.html',
-            minify: false,
+            minify: true,
             chunks: ['contact'],
+            inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'weronika_surdacka.html',
             template: './src/weronika_surdacka.html',
-            minify: false,
+            minify: true,
             chunks: ['weronikaSurdacka'],
+            inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'royal_star.html',
             template: './src/royal_star.html',
-            minify: false,
+            minify: true,
             chunks: ['royalStar'],
+            inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'frontline_club.html',
             template: './src/frontline_club.html',
-            minify: false,
+            minify: true,
             chunks: ['frontlineClub'],
+            inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'pina_colada.html',
             template: './src/pina_colada.html',
-            minify: false,
+            minify: true,
             chunks: ['pinaColada'],
+            inject: false
         }),
         new CopyPlugin({ 
             patterns: [
@@ -79,7 +108,13 @@ module.exports = {
                 },
                 {
                     from: './src/favicon', to: './favicon'
-                }
+                },
+                {
+                    from : './src/.htaccess', to: './'
+                },
+                {
+                    from: './src/sendMail.php', to: './'
+                },
             ]
         }),
         new ImageminPlugin({
@@ -110,9 +145,9 @@ module.exports = {
                     {
                         loader: 'css-loader?-url'
                     },
-                    {
-                        loader: 'postcss-loader'
-                    },
+                    // {
+                    //     loader: 'postcss-loader'
+                    // },
                     {
                         loader: 'sass-loader'
                     }

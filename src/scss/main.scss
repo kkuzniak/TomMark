@@ -38,6 +38,11 @@ body {
         max-width: 1920px;
         margin-right: auto;
         margin-left: auto;
+
+        @media (max-width: 1920px) {
+            overflow-x: hidden;
+        }
+
         @media (max-width: 767px) {
             > *:not(.smallScreenInfo) {
                 display: none;

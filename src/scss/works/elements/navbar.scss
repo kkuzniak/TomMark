@@ -50,5 +50,6 @@
     &__goBackButton {
         top: 190px;
         left: 50px;
+        animation: fadeIn cubic-bezier(0.22, 1, 0.36, 1) 1600ms;
     }
 }

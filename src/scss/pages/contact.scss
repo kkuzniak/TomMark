@@ -1,41 +1,91 @@
 @import '../main';
+@import '../anim';
 @import '../elements/smallScreenInfo';
 @import '../fonts/MonoSpec';
 
-.container {
+.goBackButton {
+    width: 22px;
+    height: 45px;
+    position: fixed;
+    top: 100px;
+    left: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+    z-index: 999;
+
+    @media (max-width: 1000px) {
+        display: block;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.navbar {
+    position: fixed;
     width: 100%;
-    max-width: 1492px;
+    max-width: 1650px;
     height: 100%;
-    max-height: 708px;
-    margin: auto auto;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
+    min-height: 540px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 999;
+    pointer-events: none;
+
+    > * {
+        position: absolute;
+        pointer-events: all;
+    }
 
     .nav {
-        position: absolute;
-        right: 50px;
-        top: 0;
+        top: 100px;
+        right: 55px;
     }
 
     .noSocials {
-        position: absolute;
-        right: 50px;
-        bottom: 0;
+        bottom: 120px;
+        right: 55px;
 
         @media (max-width: 1250px) {
-            grid-template-rows: 32px 32px 32px 32px;
-            grid-template-columns: 32px;
-            grid-row-gap: 20px;
-            grid-column-gap: 0;
             bottom: 50%;
             transform: translateY(50%);
         }
-        
-        &__item svg {
-            fill: $c-grey-2;
+    }
+}
+
+.noSocials {
+    @media (max-width: 1250px) {
+        grid-template-rows: 32px 32px 32px 32px;
+        grid-template-columns: 32px;
+        grid-row-gap: 20px;
+        grid-column-gap: 0;
+    }
+
+    &__item:hover {
+        @media (max-width: 1250px) {
+            transform: translateX(-4px);
         }
+    }
+    
+    &__item svg {
+        fill: $c-grey-2;
+    }
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 250px;
+    margin-bottom: 100px;
+
+    @media (max-width: 850px) {
+        justify-content: flex-start;
     }
 
     .contactContainer {
@@ -43,10 +93,16 @@
         grid-template-columns: 580px;
         grid-template-rows: 78px 46px 355px 120px 78px;
         font-size: 16px;
+        position: relative;
+        // overflow: visible;
 
         @media (max-width: 1250px) {
             grid-template-columns: 528px;
             grid-template-rows: 70px 46px 323px 120px 70px;
+        }
+
+        @media (max-width: 850px) {
+            margin-left: 80px;
         }
 
         .field {
@@ -77,6 +133,7 @@
             input, textarea {
                 transition: border 200ms ease;
                 outline: none;
+                box-shadow: none;
             }
 
             p {
@@ -96,7 +153,6 @@
         }
 
         &__emailField {
-            // margin-bottom: 46px;
             grid-row: 1 / 2;
             box-shadow: none;
 
@@ -115,7 +171,6 @@
         }
 
         &__messageField {
-            // margin-bottom: 120px;
             grid-row: 3 / 4;
 
             textarea {
@@ -136,6 +191,30 @@
             }
         }
 
+        .envelopeIcon {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            overflow: visible;
+
+            &Opened {
+                visibility: hidden;
+                opacity: 0;
+
+                &__front {
+                    position: absolute;
+                    z-index: 999;
+                }
+            }
+
+            &Closed {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+
         &__submitButton {
             width: 100%;
             height: 100%;
@@ -146,11 +225,27 @@
             color: $c-white;
             font-size: 16px;
             outline: none;
-            transition: transform 300ms ease;
+            transition: transform 200ms ease;
             display: flex;
             justify-content: center;
             align-items: center;
             grid-row: 5 / 6;
+            position: relative;
+            overflow: hidden;
+
+            .sentBg {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                background-color: #09BD4E;
+            }
+
+            .loaderIcon {
+                width: 44px;
+                height: 11px;
+                position: absolute;
+                display: none;
+            }
 
             &--default {
                 .text {
@@ -168,53 +263,12 @@
                 .loaderIcon {
                     overflow: visible;
                     display: block;
-
-                    rect:first-of-type {
-                        animation: move 5000ms forwards;
-                        transform-box: fill-box;
-                    }
-
-                    rect:nth-of-type(2) {
-                        animation: first 400ms forwards;
-                        animation-delay: 1600ms;
-                    }
-                    rect:nth-of-type(3) {
-                        animation: sec 400ms forwards;
-                        animation-delay: 1600ms;
-                    }
-                    rect:nth-of-type(4) {
-                        animation: third 400ms forwards;
-                        animation-delay: 1600ms;
-                    }
                 }
             }
 
             &:active {
-                transform: scale(1.03);
+                transform: scale(0.95);
             }
         }
-    }
-}
-
-@keyframes first {
-    100% {
-        transform: translateX(0px);
-    }
-}
-@keyframes sec {
-    100% {
-        transform: translateX(11px);
-    }
-}
-@keyframes third {
-    100% {
-        transform: translateX(22px);
-    }
-}
-
-@keyframes move {
-    100% {
-        transform-origin: center;
-        transform: translate(11px, -11px), rotate(180deg);
     }
 }
