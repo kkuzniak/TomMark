@@ -1,7 +1,7 @@
 .nav {
     display: flex;
     align-items: flex-end;
-    animation: fadeIn 600ms ease;
+    animation: fadeIn cubic-bezier(0.22, 1, 0.36, 1) 1600ms;
     transition: visibility 300ms ease, opacity 300ms ease;
     opacity: 1;
     visibility: visible;

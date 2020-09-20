@@ -1,19 +1,50 @@
 @import '../main';
+@import '../anim';
 @import '../elements/smallScreenInfo';
 @import '../fonts/MonoSpec';
 @import '../fonts/Love';
 
+.goBackButton {
+    width: 22px;
+    height: 45px;
+    position: absolute;
+    top: 84px;
+    left: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+    z-index: 999;
+
+    @media (max-width: 1000px) {
+        display: block;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
 .about {
-    display: flex;
-    justify-content: space-between;
-    margin: 150px 90px 400px 60px;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 422px 32px 240px auto 250px;
+    padding: 150px 90px 400px 60px;
     color: $c-white;
+    position: relative;
+
+    @media (max-width: 1200px) {
+        grid-template-rows: auto auto;
+        grid-template-columns: 28px 240px auto 208px 22px;
+        grid-row-gap: 110px;
+        padding: 155px 0 400px 0;
+    }
     
     &__backgroundAnimation {
-        width: 100%;
-        min-width: 1200px;
+        width: 100vw;
+        min-width: 1420px;
         position: absolute;
-        margin: 0 auto;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
@@ -24,29 +55,60 @@
         display: flex;
         padding-top: 25px;
 
+        @media (max-width: 1200px) {
+            width: 100%;
+            flex-direction: column;
+            grid-column: 1 / 6;
+            padding-left: 20px;
+        }
+
         &__subHeader {
             color: $c-grey-4;
             font-size: 20px;
             writing-mode: vertical-rl;
-            margin-right: 25px;
+            display: inline-block;
+
+            @media (max-width: 1200px) {
+                writing-mode: horizontal-tb;
+                order: 2;
+                font-size: 28px;
+            }
         }
 
         &__mainHeader {
             font-weight: 100;
-            font-size: 280px;
+            font-size: 248px;
             writing-mode: vertical-rl;
-            margin-right: 32px;
             line-height: 80%;
+            display: inline-block;
 
-            @media (max-width: 1500px) {
+            @media (max-width: 1200px) {
+                writing-mode: horizontal-tb;
                 font-size: 200px;
             }
+
+            @media (max-width: 1000px) {
+                font-size: 154px;
+            }
+        }
+    }
+
+    &__leftSecondSection {
+        grid-column: 3 / 4;
+
+        @media (max-width: 1200px) {
+            grid-row: 2 / 3;
+            grid-column: 2 / 3;
         }
 
         &__detailsContainer {
             &__section {
+                width: 100%;
                 font-size: 14px;
-                width: 280px;
+
+                @media (max-width: 1000px) {
+                    font-size: 12px;
+                }
 
                 &:nth-child(1) {
                     margin-bottom: 90px;
@@ -55,8 +117,8 @@
                 &:nth-child(2) {
                     margin-bottom: 240px;
 
-                    @media (max-width: 1500px) {
-                        margin-bottom: 180px;
+                    @media (max-width: 1200px) {
+                        margin-bottom: 90px;
                     }
                 }
 
@@ -106,13 +168,30 @@
     }
 
     &__rightSection {
+        grid-column: 5 / 6;
+
+        @media (max-width: 1200px) {
+            grid-row: 2 / 3;
+            grid-column: 4 / 5;
+        }
+            
         &__navigation {
             margin-bottom: 94px;
+
+            @media (max-width: 1200px) {
+                position: absolute;
+                top: 92px;
+                right: 52px;
+            }
         }
 
         &__paragraph {
             font-size: 20px;
             line-height: 200%;
+
+            @media (max-width: 1200px) {
+                font-size: 16px;
+            }
 
             &:first-of-type {
                 margin-bottom: 55px;
@@ -120,6 +199,10 @@
 
             &:last-of-type {
                 margin-bottom: 96px;
+
+                @media (max-width: 1200px) {
+                    margin-bottom: 60px;
+                }
             }
 
             span {
@@ -131,6 +214,9 @@
 
         &__socials {
             margin-left: 21px;
+            @media (max-width: 1200px) {
+                margin-left: 0;
+            }
         }
     }
 }
