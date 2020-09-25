@@ -1,0 +1,39 @@
+.pageLoader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: opacity cubic-bezier(0.22, 1, 0.36, 1) 1200ms, visibility cubic-bezier(0.22, 1, 0.36, 1) 1200ms;
+
+    .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $c-black;
+        opacity: 1;
+    }
+
+    &--hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &--shown {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .loaderIcon {
+        width: 120px;
+        height: 30px;
+        z-index: 1;
+        overflow: visible;
+    }
+}

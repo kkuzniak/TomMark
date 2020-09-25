@@ -1,12 +1,12 @@
-import gsap, {Power1, Power3, Expo} from 'gsap';
+import gsap from 'gsap';
+import CustomEase from '../Plugins/CustomEase.min';
+import Anim from '../anim';
 import ContactController from '../Controllers/ContactController';
 
 export default class ContactView {
     constructor() {
-        this.timelines = {
-            loaderTl: undefined,
-            submittedTl: undefined
-        };
+        gsap.registerPlugin(CustomEase);
+        CustomEase.create('cubic-bezier', '0.16, 1, 0.3, 1');
         this.elements = {
             fields: {
                 email: document.getElementById('emailField'),
@@ -18,18 +18,30 @@ export default class ContactView {
             },
             submitButton: document.getElementById('submitButton')
         };
-        this.elements.fields.email.value = 'kacperkuzniak@gmail.com';
-        this.elements.fields.message.value = 'Wiadomość testowa';
-        this.setupTimelines();
+        this.timelines = {
+            loaderTl: (new Anim()).loaderTl(),
+            submittedTl: this.submittedTl(),
+            switchToLoaderTl: this.switchToLoaderTl()
+        };
         this.addEvents();
     }
 
     addEvents() {
         this.elements.submitButton.addEventListener('click', () => {
             if (this.isEmailValidated(this.elements.fields.email.value) && this.isMessageValidated(this.elements.fields.message.value)) {
-                this.setButtonType('loader');
+                this.timelines.switchToLoaderTl.play('start');
+                this.timelines.loaderTl.play('start');
                 (new ContactController()).sendEmail(this.elements.fields.email.value, this.elements.fields.message.value).then(res => {
-                    console.log(res);
+                    if (res == 1) {
+                        this.timelines.switchToLoaderTl.play('start');
+                        this.timelines.submittedTl.play('start');
+                        setTimeout(() => {
+                            this.elements.fields.email.value = '';
+                            this.elements.fields.message.value = '';
+                        }, 3600);
+                    } else {
+                        console.log('There was a problem with sending your message');
+                    }
                 });
             } else {
                 !this.isEmailValidated(this.elements.fields.email.value) ? this.showEmailFail() : '';
@@ -68,84 +80,66 @@ export default class ContactView {
         this.elements.containers.message.classList.add('field--default');
     }
 
-    setButtonType(type = 'default') {
-        if (type == 'loader') {
-            this.elements.submitButton.classList.remove(`contactContainer__submitButton--default`);
-            this.elements.submitButton.classList.add(`contactContainer__submitButton--loader`);
-            this.timelines.loaderTl.play('start');
-        } else {
+    switchToLoaderTl() {
+        const tl = new gsap.timeline();
+        const elements = {
+            loaderIcon: document.getElementById('submitLoaderIcon'),
+            text: document.getElementById('submitText')
+        };
 
-        }
+        tl.addLabel('start')
+            .to(elements.text, 0.8, {ease: 'cubic-bezier', opacity: 0}, 'start')
+            .set(elements.text, {y: '300%', opacity: 1})
+            .to(elements.loaderIcon, 0.5, {ease: 'cubic-bezier', opacity: 1}, 'start');
+        tl.pause();
+        return tl;
     }
 
-    setupTimelines() {
-        this.timelines.loaderTl = new gsap.timeline({repeat: -1});
-        const rectangles = document.querySelectorAll('.loaderIcon .rect');
-        this.timelines.loaderTl.addLabel('start')
-            .to(rectangles[0], 0.4, {ease: Power3.easeOut, rotation: 180, transformOrigin: 'right top'})
-            .to(rectangles[0], 0.4, {ease: Power3.easeOut, rotation: 270, transformOrigin: 'left top'})
-            .to(rectangles[0], 0.4, {ease: Power3.easeOut,rotation: 360, transformOrigin: 'left bottom'})
-            .to(rectangles[0], 0.4, {ease: Power3.easeOut, rotation: 540, transformOrigin: 'right bottom'})
-            .addLabel('slideLeft')
-            .to(rectangles[0], 0.3, {ease: Power1.easeOut, x: -11}, 'slideLeft-=0.3')
-            .to(rectangles[1], 0.3, {ease: Power1.easeOut, x: 0}, 'slideLeft-=0.3')
-            .to(rectangles[2], 0.3, {ease: Power1.easeOut, x: 11}, 'slideLeft-=0.3')
-            .to(rectangles[3], 0.3, {ease: Power1.easeOut, x: 22}, 'slideLeft-=0.3')
-            .to(rectangles[1], 0.4, {ease: Power3.easeOut, rotation: 180, transformOrigin: 'right top'})
-            .to(rectangles[1], 0.4, {ease: Power3.easeOut, rotation: 270, transformOrigin: 'left top'})
-            .to(rectangles[1], 0.4, {ease: Power3.easeOut,rotation: 360, transformOrigin: 'left bottom'})
-            .to(rectangles[1], 0.4, {ease: Power3.easeOut, rotation: 540, transformOrigin: 'right bottom'})
-            .addLabel('slideLeft')
-            .to(rectangles[0], 0.3, {ease: Power1.easeOut, x: -22}, 'slideLeft-=0.3')
-            .to(rectangles[1], 0.3, {ease: Power1.easeOut, x: -11}, 'slideLeft-=0.3')
-            .to(rectangles[2], 0.3, {ease: Power1.easeOut, x: 0}, 'slideLeft-=0.3')
-            .to(rectangles[3], 0.3, {ease: Power1.easeOut, x: 11}, 'slideLeft-=0.3')
-            .to(rectangles[2], 0.4, {ease: Power3.easeOut, rotation: 180, transformOrigin: 'right top'})
-            .to(rectangles[2], 0.4, {ease: Power3.easeOut, rotation: 270, transformOrigin: 'left top'})
-            .to(rectangles[2], 0.4, {ease: Power3.easeOut,rotation: 360, transformOrigin: 'left bottom'})
-            .to(rectangles[2], 0.4, {ease: Power3.easeOut, rotation: 540, transformOrigin: 'right bottom'})
-            .addLabel('slideLeft')
-            .to(rectangles[0], 0.3, {ease: Power1.easeOut, x: -33}, 'slideLeft-=0.3')
-            .to(rectangles[1], 0.3, {ease: Power1.easeOut, x: -22}, 'slideLeft-=0.3')
-            .to(rectangles[2], 0.3, {ease: Power1.easeOut, x: -11}, 'slideLeft-=0.3')
-            .to(rectangles[3], 0.3, {ease: Power1.easeOut, x: 0}, 'slideLeft-=0.3')
-            .to(rectangles[3], 0.4, {ease: Power3.easeOut, rotation: 180, transformOrigin: 'right top'})
-            .to(rectangles[3], 0.4, {ease: Power3.easeOut, rotation: 270, transformOrigin: 'left top'})
-            .to(rectangles[3], 0.4, {ease: Power3.easeOut,rotation: 360, transformOrigin: 'left bottom'})
-            .to(rectangles[3], 0.4, {ease: Power3.easeOut, rotation: 540, transformOrigin: 'right bottom'})
-            .addLabel('slideLeft')
-            .to(rectangles[0], 0.3, {ease: Power1.easeOut, x: -44}, 'slideLeft-=0.3')
-            .to(rectangles[1], 0.3, {ease: Power1.easeOut, x: -33}, 'slideLeft-=0.3')
-            .to(rectangles[2], 0.3, {ease: Power1.easeOut, x: -22}, 'slideLeft-=0.3')
-            .to(rectangles[3], 0.3, {ease: Power1.easeOut, x: -11}, 'slideLeft-=0.3');
-        // this.timelines.loaderTl.pause();
+    submittedTl() {
         const envelopeOpened = document.querySelector('.envelopeIconOpened');
-        const front = document.querySelector('.envelopeIconOpened__front');
+        const envelopeOpenedFront = document.querySelector('.envelopeOpenedFrontIcon');
         const envelopeClosed = document.querySelector('.envelopeIconClosed');
         const sentBg = document.querySelector('.sentBg');
         const fields = [this.elements.fields.email, this.elements.fields.message];
         const submitButton = {
-            loader: document.querySelector('.contactContainer__submitButton .loaderIcon')
+            self: document.getElementById('submitButton'),
+            text: document.getElementById('submitText'),
+            sentText: document.getElementById('submitSentText'),
+            loaderIcon: document.getElementById('submitLoaderIcon'),
         }
-        this.timelines.submittedTl = new gsap.timeline();
-        this.timelines.submittedTl.set(sentBg, {scaleX: 0, transformOrigin: 'center left'});
-        this.timelines.submittedTl.addLabel('start')
-            .set(this.elements.submitButton, {pointerEvents: 'none'})
+
+        const tl = new gsap.timeline();
+        tl.set(sentBg, {scaleX: 0, transformOrigin: 'center left', visibility: 'visible', opacity: 1});
+        tl.addLabel('start')
+            .set(submitButton.self, {pointerEvents: 'none'})
+            .set(submitButton.text, {y: '300%'})
             .addLabel('slideFieldsUp')
-            .to(fields[0], 0.6, {ease: Expo.easeOut, y: -160, scale: 0.8, transformOrigin: 'top center'}, 'slideFieldsUp')
-            .to(fields[1], 0.6, {ease: Expo.easeOut, y: -210, scale: 0.8, transformOrigin: 'top center'}, 'slideFieldsUp')
-            .addLabel('showPaper')
-            .to(envelopeOpened, 0.6, {ease: Expo.easeOut, visibility: 'visible', opacity: 1}, 'showPaper')
-            .to(envelopeClosed, 0.6, {ease: Expo.easeOut, visibility: 'visible', opacity: 1}, 'showPaper')
+            .to(fields[0], 0.4, {ease: 'cubic-bezier', y: '-200%', scale: 0.8, transformOrigin: 'top center'}, 'slideFieldsUp') // -160
+            .to(fields[1], 0.4, {ease: 'cubic-bezier', y: '-60%', scale: 0.8, transformOrigin: 'top center'}, 'slideFieldsUp') // -210
+            .to(envelopeOpened, 0.6, {ease: 'cubic-bezier', visibility: 'visible', opacity: 1}, 'slideFieldsUp+=0.9')
+            .to(envelopeOpenedFront, 0.6, {ease: 'cubic-bezier', visibility: 'visible', opacity: 1}, 'slideFieldsUp+=0.9')
             .addLabel('slideFieldsDown')
-            .to(fields[0], 0.6, {ease: Expo.easeOut, y: -100, opacity: 0}, 'slideFieldsDown')
-            .to(fields[1], 0.6, {ease: Expo.easeOut, y: -150, opacity: 0}, 'slideFieldsDown')
-            .to(envelopeOpened, 0.2, {ease: Expo.easeOut, visibility: 'hidden', opacity: 0})
-            .to(envelopeClosed, 0.6, {ease: Expo.easeOut, scale: 0.5, transformOrigin: 'center center', rotate: 30, x: '-50px'})
-            .addLabel('sendMessage')    
-            .to(envelopeClosed, 0.8, {ease: Expo.easeOut, x: '150%', opacity: 0, visibility: 0}, 'sendMessage')
-            .to(sentBg, 0.8, {ease: Expo.easeOut, scaleX: 1}, 'sendMessage')
+            .set(envelopeClosed, {ease: 'cubic-bezier', visibility: 'visible', opacity: 1})
+            .to(fields[0], 0.6, {ease: 'cubic-bezier', y: '130%'}, 'slideFieldsDown') // 120
+            .to(fields[1], 0.6, {ease: 'cubic-bezier', y: '20%'}, 'slideFieldsDown') // 70
+            .addLabel('closeEnvelope')
+            .to(fields, 0.4, {ease: 'cubic-bezier', opacity: 0}, 'closeEnvelope')
+            .to(envelopeOpened, 0.5, {ease: 'cubic-bezier', opacity: 0}, 'closeEnvelope+=0.2')
+            .to(envelopeOpenedFront, 0.5, {ease: 'cubic-bezier', opacity: 0}, 'closeEnvelope+=0.2')
+            .to(envelopeClosed, 0.6, {ease: 'cubic-bezier', scale: 0.3, transformOrigin: 'center center', rotate: 15})
             .set(fields, {y: 0, scale: 1})
-            .to(fields, 0.6, {ease: Expo.easeOut, y: 0, opacity: 1});
+            .addLabel('sendMessage')    
+            .to(envelopeClosed, 0.6, {ease: 'cubic-bezier', x: '120%', opacity: 0, visibility: 0}, 'sendMessage')
+            .to(sentBg, 0.8, {ease: 'cubic-bezier', scaleX: 1}, 'sendMessage')
+            .to(submitButton.loaderIcon, 0.8, {ease: 'cubic-bezier', opacity: 0}, 'sendMessage-=0.2')
+            .to(submitButton.sentText, 0.5, {ease: 'cubic-bezier', y: 0}, 'sendMessage+=0.2')
+            .to(fields, 0.6, {opacity: 1}, 'sendMessage+=0.2')
+            .addLabel('end')
+            .to(sentBg, 0.8, {ease: 'cubic-bezier', scaleX: 0, transformOrigin: 'center right'}, 'end+=0.5')
+            .to(submitButton.sentText, 0.5, {ease: 'cubic-bezier', opacity: 0}, 'end+=0.4')
+            .to(submitButton.text, 0.8, {ease: 'cubic-bezier', y: 0}, 'end+=0.4')
+            .set(submitButton.self, {pointerEvents: ''});
+        tl.pause();
+        return tl;
     }
 }

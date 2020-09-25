@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html class="w-100" lang="en">
+<html class="w-100 h-100" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Tom Mark"/>
+    <meta property="og:title" content="tom_mark."/>
     <meta property="og:description" content="Graphic Design Specialist"/>
-    <meta property="og:image" content="http://tom-mark.com/images/og-image.jpg"/>
+    <meta property="og:image" content="https://tom-mark.com/images/og-image.jpg"/>
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -18,19 +18,19 @@
     <title>Tom-Mark | Contact</title>
     <link rel="stylesheet" href="/contact.css">
 </head>
-<body class="w-100">
+<body class="w-100 h-100">
     <div class="h-wrapper">
         <div class="smallScreenInfo">
             <div class="smallScreenInfo__wrapper">
                 <div class="smallScreenInfo__image">
-                    <img src="https://media.giphy.com/media/hEc4k5pN17GZq/giphy.gif" alt="">
+                    <img src="https://media.giphy.com/media/hEc4k5pN17GZq/giphy.gif" alt="travolta gif">
                 </div>
                 <h1 class="smallScreenInfo__text font-mono700">Oops...</h1>
                 <h1 class="smallScreenInfo__text font-mono700">We're still working on version for your screen size, come back later or try on a bigger screen.</h1>
             </div>
         </div>  
         <a href="/index.html" class="goBackButton">
-            <img src="/icons/go-back-icon-black.svg" alt="Back to main menu button icon">
+            <img src="/icons/go-back-icon-black.svg" alt="back icon">
         </a>
         <div class="navbar">
             <nav class="nav nav--grey justify--flex-end">
@@ -80,9 +80,7 @@
                 <label class="contactContainer__messageField field field--default">
                     <textarea id="messageField" placeholder="you can even text.. “I like your works!”" class="font-mono600" maxlength="460"></textarea>
                     <p class="font-mono600">
-                        message box is empty.<br>
-                        I’m sure you have<br>
-                        something more to say :)
+                        message box is empty. I’m sure you have something more to say :)
                     </p>
                 </label>
                 <svg class="envelopeIcon" xmlns="http://www.w3.org/2000/svg" width="586.148" height="609.782" viewBox="0 0 586.148 609.782">
@@ -95,14 +93,22 @@
                         <g class="envelopeIconOpened">
                             <path d="M747.8,338.21c-.6,9.12-6.87,17.87-17.87,23.13,0,0-207.4,106.88-259.9,133.73a26.294,26.294,0,0,1-23.93,0c-52.51-26.84-259.91-133.73-259.91-133.73-12.7-6.06-19.08-16.81-17.73-27.37.06-.54.15-1.07.26-1.61h-.33c1.28-8.43,7.42-16.37,17.66-21.26,0,0,207.4-106.89,259.91-133.73a26.315,26.315,0,0,1,23.94,0C522.4,204.21,729.8,311.1,729.8,311.1c10.39,4.96,16.56,13.05,17.71,21.62a20.818,20.818,0,0,1,.19,2.09h.06A22.729,22.729,0,0,1,747.8,338.21Z" fill="#333" stroke="#000" stroke-miterlimit="10" stroke-width="6.161"/>
                             <line x2="579" transform="translate(168.83 332.72)" fill="none" stroke="#1a1a1a" stroke-miterlimit="10" stroke-width="6.161"/>
-                            <path class="envelopeIconOpened__front" d="M747.83,339.72V646.15c0,21.58-16.71,39.07-37.33,39.07H205.16c-20.62,0-37.33-17.49-37.33-39.07V340.72a34.424,34.424,0,0,1,.63-6.75c-1.35,10.56,5.03,21.31,17.73,27.37,0,0,207.4,106.89,259.91,133.73a26.294,26.294,0,0,0,23.93,0c52.5-26.85,259.9-133.73,259.9-133.73,11-5.26,17.27-14.01,17.87-23.13C747.82,338.7,747.83,339.21,747.83,339.72Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="6.104"/>
+                            <path d="M747.83,339.72V646.15c0,21.58-16.71,39.07-37.33,39.07H205.16c-20.62,0-37.33-17.49-37.33-39.07V340.72a34.424,34.424,0,0,1,.63-6.75c-1.35,10.56,5.03,21.31,17.73,27.37,0,0,207.4,106.89,259.91,133.73a26.294,26.294,0,0,0,23.93,0c52.5-26.85,259.9-133.73,259.9-133.73,11-5.26,17.27-14.01,17.87-23.13C747.82,338.7,747.83,339.21,747.83,339.72Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="6.104"/>
                         </g>
                     </g>
-                </svg>            
-                <button id="submitButton" class="contactContainer__submitButton contactContainer__submitButton--loader font-mono600">
+                </svg>
+                <div class="envelopeOpenedFrontIcon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="586.104" height="354.901" viewBox="0 0 586.104 354.901">
+                        <g transform="translate(-164.778 -333.371)">
+                          <path d="M747.83,339.72V646.15c0,21.58-16.71,39.07-37.33,39.07H205.16c-20.62,0-37.33-17.49-37.33-39.07V340.72a34.424,34.424,0,0,1,.63-6.75c-1.35,10.56,5.03,21.31,17.73,27.37,0,0,207.4,106.89,259.91,133.73a26.294,26.294,0,0,0,23.93,0c52.5-26.85,259.9-133.73,259.9-133.73,11-5.26,17.27-14.01,17.87-23.13C747.82,338.7,747.83,339.21,747.83,339.72Z" fill="#fff" stroke="#000" stroke-miterlimit="10" stroke-width="6.104"/>
+                        </g>
+                    </svg>
+                </div>
+                <button id="submitButton" class="contactContainer__submitButton contactContainer__submitButton--default font-mono600">
                     <div class="sentBg"></div>
-                    <span class="text">SEND</span>
-                    <svg class="loaderIcon" xmlns="http://www.w3.org/2000/svg" width="44" height="11" viewBox="0 0 44 11">
+                    <span id="submitText" class="text">SEND</span>
+                    <span id="submitSentText" class="sentText">SENT!</span>
+                    <svg id="submitLoaderIcon" class="loaderIcon" xmlns="http://www.w3.org/2000/svg" width="44" height="11" viewBox="0 0 44 11">
                         <rect class="rect" width="11" height="11" fill="#fff"/>
                         <rect class="rect" width="11" height="11" transform="translate(11)" fill="#c4c4c4"/>
                         <rect class="rect" width="11" height="11" transform="translate(22)" fill="#898989"/>

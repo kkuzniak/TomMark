@@ -1,5 +1,4 @@
 @import '../main';
-@import '../anim';
 @import '../elements/smallScreenInfo';
 @import '../fonts/MonoSpec';
 
@@ -17,6 +16,14 @@
 
     @media (max-width: 1000px) {
         display: block;
+        top: 80px;
+    }
+
+    @media (max-height: 840px) {
+        top: 60px;
+    }
+    @media (max-height: 700px) {
+        top: 30px;
     }
 
     img {
@@ -45,6 +52,18 @@
     .nav {
         top: 100px;
         right: 55px;
+
+        @media (max-width: 1000px) {
+            top: 80px;
+        }
+
+        @media (max-height: 840px) {
+            top: 60px;
+        }
+
+        @media (max-height: 700px) {
+            top: 30px;
+        }
     }
 
     .noSocials {
@@ -54,6 +73,10 @@
         @media (max-width: 1250px) {
             bottom: 50%;
             transform: translateY(50%);
+        }
+
+        @media (max-height: 840px) and (min-width: 1251px) {
+            bottom: 80px;
         }
     }
 }
@@ -79,10 +102,10 @@
 
 .container {
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 250px;
-    margin-bottom: 100px;
+    align-items: center;
 
     @media (max-width: 850px) {
         justify-content: flex-start;
@@ -90,19 +113,28 @@
 
     .contactContainer {
         display: grid;
-        grid-template-columns: 580px;
+        grid-template-columns: 580px;   
         grid-template-rows: 78px 46px 355px 120px 78px;
         font-size: 16px;
         position: relative;
-        // overflow: visible;
 
         @media (max-width: 1250px) {
-            grid-template-columns: 528px;
-            grid-template-rows: 70px 46px 323px 120px 70px;
+            padding-top: 100px;
+            grid-template-columns: 480px;
+            grid-template-rows: 70px 46px 323px 100px 70px;
         }
 
         @media (max-width: 850px) {
             margin-left: 80px;
+        }
+
+
+        @media (max-height: 780px) {
+            grid-template-columns: 500px;   
+            grid-template-rows: 70px 46px 300px 60px 70px;
+        }
+        @media (max-height: 700px) {
+            grid-template-rows: 70px 26px 280px 60px 70px;
         }
 
         .field {
@@ -133,7 +165,7 @@
             input, textarea {
                 transition: border 200ms ease;
                 outline: none;
-                box-shadow: none;
+                -webkit-appearance: none;
             }
 
             p {
@@ -141,6 +173,10 @@
                 font-size: 14px;
                 color: $c-red;
                 transition: visibility 200ms ease, opacity 200ms ease;
+
+                @media (max-height: 780px) {
+                    font-size: 12px;
+                }
 
                 &:before {
                     content: '*';
@@ -167,6 +203,10 @@
                 border-radius: 50px;
                 padding: 0 20px;
                 font-size: 16px;
+
+                @media (max-height: 780px) {
+                    font-size: 14px;
+                }
             }
         }
 
@@ -183,12 +223,48 @@
                 resize: none;
                 line-height: 180%;
                 font-size: 16px;
+                -ms-overflow-style: none; 
+                scrollbar-width: none; 
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }                  
+
+                @media (max-width: 1250px) {
+                    padding: 20px 20px;
+                }
+
+                @media (max-height: 780px) {
+                    font-size: 14px;
+                }
             }
 
             p {
                 right: 0;
                 top: 108%;
+                width: 40%;
+
+                @media (max-width: 1250px) {
+                    width: 60%;
+                }
+
+                @media (max-height: 780px) {
+                    width: 80%;
+                    left: 4%;
+                    top: 104%;
+                }
             }
+        }
+
+        .envelopeOpenedFrontIcon {
+            position: absolute;
+            z-index: 1;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50px);
+            overflow: visible;
+            opacity: 0;
+            visibility: hidden;
         }
 
         .envelopeIcon {
@@ -202,11 +278,6 @@
             &Opened {
                 visibility: hidden;
                 opacity: 0;
-
-                &__front {
-                    position: absolute;
-                    z-index: 999;
-                }
             }
 
             &Closed {
@@ -238,32 +309,24 @@
                 height: 100%;
                 position: absolute;
                 background-color: #09BD4E;
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            span {
+                position: absolute;
+            }
+
+            .sentText {
+                transform: translateY(400%);
             }
 
             .loaderIcon {
                 width: 44px;
                 height: 11px;
                 position: absolute;
-                display: none;
-            }
-
-            &--default {
-                .text {
-                    display: block;
-                }
-                .loaderIcon {
-                    display: none;
-                }
-            }
-
-            &--loader {
-                .text {
-                    display: none;
-                }
-                .loaderIcon {
-                    overflow: visible;
-                    display: block;
-                }
+                overflow: visible;
+                opacity: 0;
             }
 
             &:active {

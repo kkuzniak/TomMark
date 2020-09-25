@@ -2,19 +2,17 @@ const path = require('path');
 const HTMLWebpackPLugin = require('html-webpack-plugin');
 const HTMLReplaceWebpackPLugin = require('html-replace-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;  
-
-const baseText = '<base href="tom-mark.com"/>';
 
 module.exports = {
     entry: {
-        'landing': ['./src/js/app.js', './src/js/landing.js', './src/scss/pages/landing.scss'],
+        'landing': ['./src/js/landing.js', './src/scss/pages/landing.scss'],
         'about': ['./src/scss/pages/about.scss'],
         'contact': ['./src/js/contact.js', './src/scss/pages/contact.scss'],
-        'weronikaSurdacka': ['./src/js/weronikaSurdacka.js', './src/scss/works/weronikaSurdacka.scss'],
-        'royalStar': ['./src/js/royalStar.js', './src/scss/works/royalStar.scss'],
-        'frontlineClub': ['./src/js/frontlineClub.js', './src/scss/works/frontlineClub.scss'],
-        'pinaColada': ['./src/js/pinaColada.js', './src/scss/works/pinaColada.scss']
+        'work': ['./src/js/work.js'],
+        'weronikaSurdacka': ['./src/scss/works/weronikaSurdacka.scss'],
+        'royalStar': ['./src/scss/works/royalStar.scss'],
+        'frontlineClub': ['./src/scss/works/frontlineClub.scss'],
+        'pinaColada': ['./src/scss/works/pinaColada.scss']
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -70,28 +68,28 @@ module.exports = {
             filename: 'weronika_surdacka.html',
             template: './src/weronika_surdacka.html',
             minify: true,
-            chunks: ['weronikaSurdacka'],
+            chunks: ['weronikaSurdacka', 'work'],
             inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'royal_star.html',
             template: './src/royal_star.html',
             minify: true,
-            chunks: ['royalStar'],
+            chunks: ['royalStar', 'work'],
             inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'frontline_club.html',
             template: './src/frontline_club.html',
             minify: true,
-            chunks: ['frontlineClub'],
+            chunks: ['frontlineClub', 'work'],
             inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'pina_colada.html',
             template: './src/pina_colada.html',
             minify: true,
-            chunks: ['pinaColada'],
+            chunks: ['pinaColada', 'work'],
             inject: false
         }),
         new HTMLReplaceWebpackPLugin([
@@ -134,9 +132,6 @@ module.exports = {
                 }
             ]
         }),
-        new ImageminPlugin({
-            test: /\.(jpe?g|png|gif|svg)$/i
-        })
     ],
     module: {
         rules: [

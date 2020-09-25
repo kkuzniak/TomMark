@@ -1,7 +1,8 @@
 @import 'variables';
 @import './elements/nav';
 @import './elements/socials';
-@import './elements//smallScreenInfo';
+@import './elements/smallScreenInfo';
+@import './elements/pageLoader';
 
 * {
     margin: 0;
@@ -31,6 +32,11 @@ body {
                 display: none;
             }
         }
+        @media (max-height: 620px) {
+            > *:not(.smallScreenInfo) {
+                display: none;
+            }
+        }
     }
 
     .h-wrapper {
@@ -44,6 +50,11 @@ body {
         }
 
         @media (max-width: 767px) {
+            > *:not(.smallScreenInfo) {
+                display: none;
+            }
+        }
+        @media (max-height: 620px) {
             > *:not(.smallScreenInfo) {
                 display: none;
             }

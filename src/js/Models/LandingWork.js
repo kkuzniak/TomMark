@@ -1,12 +1,28 @@
 export default class LandingWork {
-    constructor(id, linkName, mainHeader, firstSubheader, secondSubheader, imageSrc, nextProjectLink, linkToMore) {
-        this.id = id;
-        this.linkName = linkName;
-        this.mainHeader = mainHeader;
-        this.firstSubheader = firstSubheader;
-        this.secondSubheader = secondSubheader;
+    constructor(projIndex = '', mainTitles = {}, subTitles = {}, imageSrc = '', dragUrls = '', previewUrl = '') {
+        this.projIndex = projIndex;
+        this.mainTitles = mainTitles;
+        this.subTitles = subTitles;
         this.imageSrc = imageSrc;
-        this.nextProjectLink = nextProjectLink;
-        this.linkToMore = linkToMore;
+        this.dragUrls = dragUrls;
+        this.previewUrl = previewUrl;
+    }
+
+    setupDefaultWork() {
+        this.projIndex = '1';
+        this.mainTitles = {
+            first: 'w.',
+            sec: '_surdacka'
+        };
+        this.subTitles = {
+            first: {
+                value: 'fashion<br>designer',
+                color: '#111111',
+            },
+            sec: 'based:<br>warsaw,<br>poland'
+        };
+        this.imageSrc = '/videos/land_1.mp4';
+        this.dragUrls = '["self","/landing_2.html","/landing_3.html","/landing_4.html"]';
+        this.previewUrl = '/work/preview/weronika-surdacka';
     }
 }
