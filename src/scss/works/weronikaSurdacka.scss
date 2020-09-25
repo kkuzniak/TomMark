@@ -1,5 +1,4 @@
 @import '../main';
-@import '../anim';
 @import '../fonts/MonoSpec';
 @import '../fonts/MicrosoftYiBaiti';
 @import '../fonts/Dylan';
@@ -41,7 +40,7 @@
             &__rangeSlider {
                 input {
                     &::-webkit-slider-thumb {
-                        -webkit-appearance: none; // needed again for Chrome & Safari
+                        -webkit-appearance: none; 
                         border: 5px solid $c-white;
                         background: $c-black;
                     }
@@ -170,7 +169,7 @@
             height: 946px;
             display: grid;
             grid-template-rows: 100%;
-            grid-template-columns: 48% auto;
+            grid-template-columns: 52% auto;
 
             &__imageWrapper {
                 img {

@@ -1,5 +1,4 @@
 @import '../main';
-@import '../anim';
 @import '../fonts/MonoSpec';
 @import '../fonts/Dylan';
 @import '../fonts/Acumin';
@@ -41,7 +40,7 @@
             &__rangeSlider {
                 input {
                     &::-webkit-slider-thumb {
-                        -webkit-appearance: none; // needed again for Chrome & Safari
+                        -webkit-appearance: none;
                         border: 5px solid $c-white;
                         background: $c-blue-2;
                     }
@@ -76,7 +75,7 @@
             &__rangeSlider {
                 input {
                     &::-webkit-slider-thumb {
-                        -webkit-appearance: none; // needed again for Chrome & Safari
+                        -webkit-appearance: none; 
                         border: 5px solid $c-black;
                         background: $c-white;
                     }
@@ -217,9 +216,6 @@
         right: 0;
         @media (max-width: 1320px) {
             transform: translateX(250px);
-        }
-        @media (max-width: 970px) {
-            // transform: translateX(550px);
         }
     }
 }

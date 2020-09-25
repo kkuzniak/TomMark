@@ -1,5 +1,4 @@
 @import '../main';
-@import '../anim';
 @import '../fonts/MonoSpec';
 @import '../fonts/Acumin';
 @import './elements/navbar';
@@ -38,7 +37,7 @@
             &__rangeSlider {
                 input {
                     &::-webkit-slider-thumb {
-                        -webkit-appearance: none; // needed again for Chrome & Safari
+                        -webkit-appearance: none;
                         border: 5px solid $c-white;
                         background: $c-green-3;
                     }

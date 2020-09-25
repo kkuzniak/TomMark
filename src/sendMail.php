@@ -12,14 +12,14 @@
     try {
         //Configuration
         $smtpUsername = "no-reply@tom-mark.com";
-        $smtpPassword = "aY3GNPLFcB4RQs3U";
-        $message = $_GET['message'];
+        $smtpPassword = "XmBsbonN7Q";
+        $message = str_replace('<br />', PHP_EOL, $_GET['message']);
         $email = $_GET['email'];
         $mail->setLanguage('pl', './phpmailer/language/phpmailer.lang-pl.php');
         $mail->CharSet = 'UTF-8';
         $mail->SMTPDebug = 0;                   
         $mail->isSMTP();                                       
-        $mail->Host       = 'smtp.hostinger.com';                   
+        $mail->Host       = 'smtp.flockmail.com';                   
         $mail->SMTPAuth   = true;                                 
         $mail->Username   = $smtpUsername;              
         $mail->Password   = $smtpPassword;                             
@@ -34,12 +34,12 @@
         );         
 
         //Recipients
-        $mail->setFrom($smtpUsername, 'Tom-Mark - formularz kontaktowy');
-        $mail->addAddress('kacperkuzniak@gmail.com', 'Admin');     
+        $mail->setFrom($smtpUsername, 'tom_mark.');
+        $mail->addAddress('kacperkuzniak@gmail.com', 'Tomasz Marciniak');     
 
         // Content
         $mail->isHTML(true);                                 
-        $mail->Subject = 'Wiadomość wysłana z formularza kontaktowego na stronie od ' . $email;
+        $mail->Subject = 'Message sent from contact form on your page from: ' . $email;
         $mail->Body    = $message;
         $mail->AltBody = $message;
 
