@@ -6,7 +6,7 @@
     left: 50%;
     top: 0;
     transform: translateX(-50%);
-    z-index: 999;
+    z-index: 900;
     pointer-events: none;
     transition: visibility 300ms ease, opacity 300ms ease;
 
@@ -30,19 +30,27 @@
     }
 
     &__navigation {
-        top: 180px;
+        top: 110px;
         right: 55px;
 
-        @media (max-width: 1020px) {
+        @media (max-width: 1080px) {
+            top: 80px;
+        }
+
+        @media (max-height: 800px) {
             top: 80px;
         }
     }
 
     &__socials {
-        bottom: 120px;
+        bottom: 100px;
         right: 55px;
 
-        @media (max-width: 1020px) {
+        @media (max-width: 1080px) {
+            bottom: 80px;
+        }
+
+        @media (max-height: 800px) {
             bottom: 80px;
         }
     }
@@ -50,6 +58,5 @@
     &__goBackButton {
         top: 190px;
         left: 50px;
-        animation: fadeIn cubic-bezier(0.22, 1, 0.36, 1) 1600ms;
     }
 }

@@ -1,5 +1,4 @@
 @import '../main';
-@import '../anim';
 @import '../elements/smallScreenInfo';
 @import '../fonts/MonoSpec';
 @import '../fonts/Love';
@@ -34,6 +33,15 @@
     color: $c-white;
     position: relative;
 
+    @media (max-width: 1600px) {
+        grid-template-columns: 360px 32px 240px auto 225px;
+        padding: 150px 70px 400px 40px;
+    }
+
+    @media (max-width: 1350px) {
+        grid-template-columns: 295px 32px 240px auto 225px;
+    }
+
     @media (max-width: 1200px) {
         grid-template-rows: auto auto;
         grid-template-columns: 28px 240px auto 208px 22px;
@@ -54,6 +62,7 @@
     &__leftSection {
         display: flex;
         padding-top: 25px;
+        justify-content: flex-end;
 
         @media (max-width: 1200px) {
             width: 100%;
@@ -81,6 +90,14 @@
             writing-mode: vertical-rl;
             line-height: 80%;
             display: inline-block;
+
+            @media (max-width: 1600px) {
+                font-size: 210px;
+            }
+
+            @media (max-width: 1350px) {
+                font-size: 170px;
+            }
 
             @media (max-width: 1200px) {
                 writing-mode: horizontal-tb;
@@ -116,6 +133,10 @@
 
                 &:nth-child(2) {
                     margin-bottom: 240px;
+
+                    @media (max-width: 1350px) {
+                        margin-bottom: 120px;
+                    }
 
                     @media (max-width: 1200px) {
                         margin-bottom: 90px;
@@ -188,6 +209,10 @@
         &__paragraph {
             font-size: 20px;
             line-height: 200%;
+
+            @media (max-width: 1600px) {
+                font-size: 17px;
+            }
 
             @media (max-width: 1200px) {
                 font-size: 16px;

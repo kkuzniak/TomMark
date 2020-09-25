@@ -8,20 +8,24 @@ export default class SliderView {
     }
 
     events() {
-        this.elements.sliderInput.addEventListener('mousedown', () => {
-            if (this.elements._self.classList.contains('dragSlider--firstColor')) {
-                this.elements._self.classList.add('dragSlider--firstColor--ready');
-            } else {
-                this.elements._self.classList.add('dragSlider--secondColor--ready');
-            }
+        ['mousedown', 'touchstart'].forEach(event => {
+            this.elements.sliderInput.addEventListener(event, () => {
+                if (this.elements._self.classList.contains('dragSlider--firstColor')) {
+                    this.elements._self.classList.add('dragSlider--firstColor--ready');
+                } else {
+                    this.elements._self.classList.add('dragSlider--secondColor--ready');
+                }
+            });
         });
-        this.elements.sliderInput.addEventListener('mouseup', () => {
-            if (this.elements._self.classList.contains('dragSlider--firstColor')) {
-                this.elements._self.classList.remove('dragSlider--firstColor--ready');
-            } else {
-                this.elements._self.classList.remove('dragSlider--secondColor--ready');
-            }
-            this.elements.sliderInput.value >= 50 ? this.elements.sliderInput.value = 100 : this.elements.sliderInput.value = 0;
+        ['mouseup', 'touchend'].forEach(event => {
+            this.elements.sliderInput.addEventListener(event, () => {
+                if (this.elements._self.classList.contains('dragSlider--firstColor')) {
+                    this.elements._self.classList.remove('dragSlider--firstColor--ready');
+                } else {
+                    this.elements._self.classList.remove('dragSlider--secondColor--ready');
+                }
+                this.elements.sliderInput.value >= 50 ? this.elements.sliderInput.value = 100 : this.elements.sliderInput.value = 0;
+            });
         });
         this.elements.sliderInput.addEventListener('input', () => {
             if (this.elements.sliderInput.value >= 50) {

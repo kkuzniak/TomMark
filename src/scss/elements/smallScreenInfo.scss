@@ -4,6 +4,11 @@
         justify-content: center;
         align-items: center;
     }
+    @media (max-height: 620px) {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
     display: none;
     position: fixed;
     width: 100%;
@@ -59,6 +64,9 @@
         }
         @media (max-width: 360px) {
             height: 180px;
+        }
+        @media (max-height: 620px) {
+            display: none;
         }
         
         img {
