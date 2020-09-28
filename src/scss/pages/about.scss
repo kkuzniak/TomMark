@@ -28,23 +28,23 @@
 .about {
     display: grid;
     grid-template-rows: 100%;
-    grid-template-columns: 422px 32px 240px auto 250px;
+    grid-template-columns: 422px 32px 260px auto 250px;
     padding: 150px 90px 400px 60px;
     color: $c-white;
     position: relative;
 
     @media (max-width: 1600px) {
-        grid-template-columns: 360px 32px 240px auto 225px;
+        grid-template-columns: 360px 32px 260px auto 225px;
         padding: 150px 70px 400px 40px;
     }
 
     @media (max-width: 1350px) {
-        grid-template-columns: 295px 32px 240px auto 225px;
+        grid-template-columns: 295px 32px 260px auto 225px;
     }
 
     @media (max-width: 1200px) {
         grid-template-rows: auto auto;
-        grid-template-columns: 28px 240px auto 208px 22px;
+        grid-template-columns: 28px 260px auto 208px 22px;
         grid-row-gap: 110px;
         padding: 155px 0 400px 0;
     }

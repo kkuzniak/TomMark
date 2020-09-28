@@ -21,11 +21,23 @@
         .navbar__goBackButton {
             transform: translateY(20%);
         }
+
+        > * {
+            pointer-events: none;
+        }
+    }
+
+    &--shown {
+        visibility: visible;
+        opacity: 1;
+
+        > * {
+            pointer-events: all;
+        }
     }
 
     > * {
         position: absolute;
-        pointer-events: all;
         transition: transform 300ms ease;
     }
 

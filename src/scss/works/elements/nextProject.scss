@@ -11,6 +11,10 @@
         max-width: 400px;
         position: relative;
 
+        @media (max-width: 1600px) {
+            max-width: 360px;
+        }  
+
         &:hover {
             &:after {
                 opacity: 1;
@@ -62,10 +66,15 @@
             color: transparent;
             position: absolute;
             top: 95px;
-            left: -65px;
+            left: -68px;
             z-index: 1;
             transition: transform cubic-bezier(0.22, 1, 0.36, 1) 800ms, opacity cubic-bezier(0.22, 1, 0.36, 1) 800ms;
             opacity: 1;
+
+            @media (max-width: 1600px) {
+                font-size: 50px;
+                left: -55px;
+            }  
         }
 
         &__description {
@@ -96,10 +105,15 @@
 
                     &:nth-of-type(2) {
                         font-size: 34px;
+
+                        @media (max-width: 1600px) {
+                            font-size: 30px;
+                        }  
                     }
 
                     &:last-of-type {
                         padding-right: 6px;
+                        align-self: end;
                     }
                 }
             }
