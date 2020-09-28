@@ -35,7 +35,7 @@
 
         //Recipients
         $mail->setFrom($smtpUsername, 'tom_mark.');
-        $mail->addAddress('kacperkuzniak@gmail.com', 'Tomasz Marciniak');     
+        $mail->addAddress('hello@tom-mark.com', 'Tomasz Marciniak');     
 
         // Content
         $mail->isHTML(true);                                 
