@@ -11,12 +11,19 @@
         max-width: 400px;
         position: relative;
 
+        @media (max-width: 1600px) {
+            max-width: 360px;
+        }
+
         &:hover {
             &:after {
                 opacity: 1;
             }
             .archive__container__text {
                 transform: translate(-50%, 50%) scale(2);
+                @media (max-width: 1600px) {
+                    transform: translate(-50%, 50%) scale(1.4);
+                }
             }
             .archive__container__sideText {
                 transform: translateX(-50%);
@@ -63,6 +70,11 @@
             z-index: 1;
             transition: transform cubic-bezier(0.22, 1, 0.36, 1) 800ms, opacity cubic-bezier(0.22, 1, 0.36, 1) 800ms;
             opacity: 1;
+
+            @media (max-width: 1600px) {
+                font-size: 50px;
+                left: -99px;
+            }
         }
     }
 }

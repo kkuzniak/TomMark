@@ -21,7 +21,7 @@ export default class LandingWork {
             },
             sec: 'based:<br>warsaw,<br>poland'
         };
-        this.imageSrc = '/videos/land_1.mp4';
+        this.imageSrc = '/videos/land-1.mp4';
         this.dragUrls = '["self","/landing_2.html","/landing_3.html","/landing_4.html"]';
         this.previewUrl = '/work/preview/weronika-surdacka';
     }

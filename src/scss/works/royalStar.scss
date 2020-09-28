@@ -138,9 +138,17 @@
             font-size: 15px;
             color: $c-blue-1;
 
+            @media (max-width: 1600px) {
+                font-size: 14px;
+            }
+
             &:last-of-type {
                 grid-column: 2 / 3;
                 font-size: 34px;
+
+                @media (max-width: 1600px) {
+                    font-size: 30px;
+                }
             }   
         }
     }
@@ -156,6 +164,9 @@
 .visual1 {
     padding-top: 200px;
     padding-bottom: 260px;
+
+    @media (max-width: 1600px) {
+    }
 
     .fullWidthVisual { 
         &__wrapper {
@@ -245,6 +256,9 @@
 
         * {
             font-size: 20px;
+            @media (max-width: 1600px) {
+                font-size: 18px;
+            }
         }
 
         &__header {
