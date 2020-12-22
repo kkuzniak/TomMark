@@ -5,13 +5,13 @@ export default class Navbar {
             hide: null
         };
         this.elements = {
-            self: document.querySelector('#workPageNavbar'),
-            navs: Array.from(document.querySelectorAll('#workPageNavbar > *'))
+            self: document.querySelector('.mainNav'),
+            navs: Array.from(document.querySelectorAll('.mainNav > *'))
         };
         this.events();
     }   
 
-    events() {
+    scrollEvents() {
         window.addEventListener('scroll', () => {
             if (this.getScrollY() == 0) {
                 this.clearHideTimeout();
@@ -58,17 +58,17 @@ export default class Navbar {
     }
 
     hide() {
-        this.elements.self.classList.remove('navbar--shown');
-        this.elements.self.classList.add('navbar--hidden');
+        this.elements.self.classList.remove('mainNav--shown');
+        this.elements.self.classList.add('mainNav--hidden');
     }
 
     show() {
-        this.elements.self.classList.remove('navbar--hidden');
-        this.elements.self.classList.add('navbar--shown');
+        this.elements.self.classList.remove('mainNav--hidden');
+        this.elements.self.classList.add('mainNav--shown');
     }
 
     isShown() {
-        return !this.elements.self.classList.contains('navbar--hidden');
+        return !this.elements.self.classList.contains('mainNav--hidden');
     }
 
     getScrollY() {

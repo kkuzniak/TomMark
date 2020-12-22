@@ -5,9 +5,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: {
         'landing': ['./src/js/landing.js', './src/scss/pages/landing.scss'],
-        'about': ['./src/scss/pages/about.scss'],
+        'work': ['./src/js/work.js', './src/scss/pages/work.scss'],
+        'about': ['./src/js/about.js', './src/scss/pages/about.scss'],
         'contact': ['./src/js/contact.js', './src/scss/pages/contact.scss'],
-        'work': ['./src/js/work.js'],
+        'workPreview': ['./src/js/workPreview.js'],
         'weronikaSurdacka': ['./src/scss/works/weronikaSurdacka.scss'],
         'royalStar': ['./src/scss/works/royalStar.scss'],
         'frontlineClub': ['./src/scss/works/frontlineClub.scss'],
@@ -29,24 +30,31 @@ module.exports = {
             inject: false
         }),
         new HTMLWebpackPLugin({
-            filename: 'landing_2.html',
-            template: './src/landing_2.html',
+            filename: 'work_1.html',
+            template: './src/work_1.html',
             minify: true,
-            chunks: ['landing'],
+            chunks: ['work'],
             inject: false
         }),
         new HTMLWebpackPLugin({
-            filename: 'landing_3.html',
-            template: './src/landing_3.html',
+            filename: 'work_2.html',
+            template: './src/work_2.html',
             minify: true,
-            chunks: ['landing'],
+            chunks: ['work'],
             inject: false
         }),
         new HTMLWebpackPLugin({
-            filename: 'landing_4.html',
-            template: './src/landing_4.html',
+            filename: 'work_3.html',
+            template: './src/work_3.html',
             minify: true,
-            chunks: ['landing'],
+            chunks: ['work'],
+            inject: false
+        }),
+        new HTMLWebpackPLugin({
+            filename: 'work_4.html',
+            template: './src/work_4.html',
+            minify: true,
+            chunks: ['work'],
             inject: false
         }),
         new HTMLWebpackPLugin({

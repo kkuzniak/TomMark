@@ -1,4 +1,4 @@
-export default class LandingWork {
+export default class Work {
     constructor(projIndex = '', mainTitles = {}, subTitles = {}, imageSrc = '', dragUrls = '', previewUrl = '') {
         this.projIndex = projIndex;
         this.mainTitles = mainTitles;
@@ -22,7 +22,7 @@ export default class LandingWork {
             sec: 'based:<br>warsaw,<br>poland'
         };
         this.imageSrc = '/videos/land-1.mp4';
-        this.dragUrls = '["self","/landing_2.html","/landing_3.html","/landing_4.html"]';
+        this.dragUrls = '["self","/work_2.html","/work_3.html","/work_4.html"]';
         this.previewUrl = '/work/preview/weronika-surdacka';
     }
 }
