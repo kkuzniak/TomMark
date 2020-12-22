@@ -1,7 +1,9 @@
 @import '../main';
 @import '../elements/smallScreenInfo';
 @import '../fonts/MonoSpec';
+@import '../fonts/RockwellStd';
 @import '../fonts/Love';
+@import '../elements//mainNav';
 
 .goBackButton {
     width: 22px;
@@ -22,6 +24,22 @@
     img {
         width: 100%;
         height: 100%;
+    }
+}
+
+.mainNav {
+    &__btn {
+        top: 50px;
+        right: 80px;
+
+        &--default {
+            position: absolute;
+        }
+
+        @media (max-width: 1200px) {
+            top: 84px;
+            right: 30px;
+        }
     }
 }
 

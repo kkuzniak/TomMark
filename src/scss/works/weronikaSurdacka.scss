@@ -3,7 +3,7 @@
 @import '../fonts/MicrosoftYiBaiti';
 @import '../fonts/Dylan';
 @import '../fonts/RockwellStd';
-@import './elements/navbar';
+@import './elements/mainNav';
 @import './elements/landing';
 @import './elements/dragSlider';
 @import './elements/typeFaceExamples';
@@ -11,6 +11,7 @@
 @import './elements/fullWidthImage';
 @import './elements/imageVisual';
 @import './elements/nextProject';
+@import '../elements//mainNav';
 
 .landingSection {
     .landing__logoWrapper {

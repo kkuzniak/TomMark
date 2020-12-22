@@ -1,5 +1,7 @@
 import ContactView from './Views/ContactView';
+import MainNavView from './Views/MainNavView';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const contactView = new ContactView();
+    new ContactView();
+    new MainNavView();
 });

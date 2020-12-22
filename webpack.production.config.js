@@ -6,9 +6,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: {
         'landing': ['./src/js/landing.js', './src/scss/pages/landing.scss'],
-        'about': ['./src/scss/pages/about.scss'],
+        'work': ['./src/js/work.js', './src/scss/pages/work.scss'],
+        'about': ['./src/js/about.js', './src/scss/pages/about.scss'],
         'contact': ['./src/js/contact.js', './src/scss/pages/contact.scss'],
-        'work': ['./src/js/work.js'],
+        'workPreview': ['./src/js/workPreview.js'],
         'weronikaSurdacka': ['./src/scss/works/weronikaSurdacka.scss'],
         'royalStar': ['./src/scss/works/royalStar.scss'],
         'frontlineClub': ['./src/scss/works/frontlineClub.scss'],
@@ -30,24 +31,31 @@ module.exports = {
             inject: false
         }),
         new HTMLWebpackPLugin({
-            filename: 'landing_2.html',
-            template: './src/landing_2.html',
+            filename: 'work_1.html',
+            template: './src/work_1.html',
             minify: true,
-            chunks: ['landing'],
+            chunks: ['work'],
             inject: false
         }),
         new HTMLWebpackPLugin({
-            filename: 'landing_3.html',
-            template: './src/landing_3.html',
+            filename: 'work_2.html',
+            template: './src/work_2.html',
             minify: true,
-            chunks: ['landing'],
+            chunks: ['work'],
             inject: false
         }),
         new HTMLWebpackPLugin({
-            filename: 'landing_4.html',
-            template: './src/landing_4.html',
+            filename: 'work_3.html',
+            template: './src/work_3.html',
             minify: true,
-            chunks: ['landing'],
+            chunks: ['work'],
+            inject: false
+        }),
+        new HTMLWebpackPLugin({
+            filename: 'work_4.html',
+            template: './src/work_4.html',
+            minify: true,
+            chunks: ['work'],
             inject: false
         }),
         new HTMLWebpackPLugin({
@@ -68,35 +76,36 @@ module.exports = {
             filename: 'weronika_surdacka.html',
             template: './src/weronika_surdacka.html',
             minify: true,
-            chunks: ['weronikaSurdacka', 'work'],
+            chunks: ['weronikaSurdacka', 'workPreview'],
             inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'royal_star.html',
             template: './src/royal_star.html',
             minify: true,
-            chunks: ['royalStar', 'work'],
+            chunks: ['royalStar', 'workPreview'],
             inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'frontline_club.html',
             template: './src/frontline_club.html',
             minify: true,
-            chunks: ['frontlineClub', 'work'],
+            chunks: ['frontlineClub', 'workPreview'],
             inject: false
         }),
         new HTMLWebpackPLugin({
             filename: 'pina_colada.html',
             template: './src/pina_colada.html',
             minify: true,
-            chunks: ['pinaColada', 'work'],
+            chunks: ['pinaColada', 'workPreview'],
             inject: false
         }),
         new HTMLReplaceWebpackPLugin([
-            {pattern: 'index.html', replacement: 'work/weronika-surdacka'},
-            {pattern: 'landing_2.html', replacement: 'work/royal-star'},
-            {pattern: 'landing_3.html', replacement: 'work/frontline-club'},
-            {pattern: 'landing_4.html', replacement: 'work/pina-colada'},
+            {pattern: 'index.html', replacement: 'home'},
+            {pattern: 'work_1.html', replacement: 'work/weronika-surdacka'},
+            {pattern: 'work_2.html', replacement: 'work/royal-star'},
+            {pattern: 'work_3.html', replacement: 'work/frontline-club'},
+            {pattern: 'work_4.html', replacement: 'work/pina-colada'},
             {pattern: 'contact.html', replacement: 'contact'},
             {pattern: 'about.html', replacement: 'about'},
             {pattern: 'weronika_surdacka.html', replacement: 'work/weronika-surdacka/preview'},
