@@ -1,163 +1,71 @@
-import gsap from 'gsap';
-import CustomEase from '../Plugins/CustomEase.min';
-import { parse } from 'node-html-parser';
-import LandingWork from '../Models/LandingWork';
-import LandingController from '../Controllers/LandingController';
+import gsap, {Power3} from 'gsap';
+import MainNav from './MainNavView';
+import '../Plugins/customEases';
 
 export default class LandingView {
     constructor() {
-        gsap.registerPlugin(CustomEase);
-        CustomEase.create('cubic-bezier', '0.22, 1, 0.36, 1');
         this.elements = {
-            landingContainer: document.getElementById('mainContainer'),
-            projNumber: document.getElementById('projNumber'),
-            projIndex: document.getElementById('projIndex'),
-            imageWrapper: document.getElementById('imageWrapper'),
-            image: document.getElementById('image'),
-            nav: document.querySelector('.nav'),
-            socials: document.querySelector('.noSocials'),
-            dragInput: document.getElementById('dragInput'),
-            mainTitles: {
-                container: document.querySelector('.content__menuSection__mainHeader'),
-                first: document.getElementById('mainTitleFirst'),
-                second: document.getElementById('mainTitleSec'),
+            videoContainer: document.querySelector('.videoContainer'),
+            videoWrapper: document.querySelector('#videoWrapper'),
+            teaserVideo: document.querySelector('#teaser-video'),
+            skipBtn: document.querySelector('.videoContainer__skipBtn'),
+            fullVideo: document.querySelector('#full-video'),
+            fullVideoWrapper: document.querySelector('#fVideoWrapper'),
+            pointer: {
+                line: document.querySelector('#pointerLine'),
+                text: document.querySelector('#pointerText')
             },
-            subTitles: {
-                first: document.getElementById('firstSubtitle'),
-                second: document.getElementById('secSubtitle'),
-            },
-            showPreviewButton: document.getElementById('showPreview')
+            mainNav: new MainNav()
         };
-        this.timelines = {
-            starterTl: this.starterTl(),
-            readyTl: this.readyTl(),
-            defaultTl: this.defaultTl(),
-        }
+        this.anim = {
+            showFullVideoTl: this.showFullVideoTl(),
+            pointerTl: this.pointerTl()
+        };
         this.events();
+        this.setup();
     }
 
     events() {
-        ['mousedown', 'touchstart'].forEach(event => {
-            this.elements.dragInput.addEventListener(event, () => {
-                this.timelines.starterTl.pause();
-                this.timelines.defaultTl.pause();
-                this.timelines.readyTl.play('start');
-            });
+        this.elements.teaserVideo.addEventListener('click', () => {
+            this.anim.pointerTl.pause();
+            this.anim.showFullVideoTl.play('start');
         });
-        ['mouseup', 'touchend'].forEach(event => {
-            this.elements.dragInput.addEventListener(event, () => {
-                const links = JSON.parse(this.elements.dragInput.dataset.workUrl);
-                const currentLink = links[this.elements.dragInput.value];
-
-                if (currentLink == 'self') {
-                    this.timelines.readyTl.pause();
-                    this.timelines.defaultTl.play('start');
-                } else {
-                    (new LandingController()).getNextWork(currentLink).then(body => {
-                        const nextWork = this.parseNextWork(parse(body));
-                        history.pushState(JSON.stringify(nextWork), null, currentLink);
-                        this.update(nextWork);
-                        this.timelines.readyTl.pause();
-                        this.timelines.starterTl.play('start');
-                    });
-                }
-            });
-        });
-        window.addEventListener('popstate', e => {
-            const work = JSON.parse(e.state);
-          
-            if (work == null) {
-                const defaultWork = new LandingWork();
-                defaultWork.setupDefaultWork();
-                this.update(defaultWork);
-            } else {
-                this.update(work);
-                this.timelines.readyTl.pause();
-                this.timelines.starterTl.play('start');
-            }
+        document.addEventListener('resize', () => {
+            this.elements.videoContainer.style.transform = `scale(${this.getTargetScale()})`;
         });
     }
 
-    starterTl() {
-        const tl = new gsap.timeline();
-        tl.addLabel('start')
-            .fromTo(this.elements.image, 1.6, {scaleY: 1.176, opacity: 0}, {ease: 'cubic-bezier', scaleY: 1, opacity: 1}, 'start')
-            .fromTo(this.elements.imageWrapper, 1.6, {scaleY: 0.85}, {ease: 'cubic-bezier', scaleY: 1}, 'start')
-            .fromTo([this.elements.socials, this.elements.nav, this.elements.projIndex], 1.6, {opacity: 0}, {ease: 'cubic-bezier', opacity: 1}, 'start')
-            .fromTo(this.elements.mainTitles.first, 1.6, {x: -200, opacity: 0}, {ease: 'cubic-bezier', x: -35, opacity: 1}, 'start')
-            .fromTo(this.elements.mainTitles.second, 1.6, {x: 200, opacity: 0}, {ease: 'cubic-bezier', x: 35, opacity: 1}, 'start')
-            .fromTo(this.elements.subTitles.first, 1.6, {opacity: 0}, {opacity: 1}, 'start+=0.2')
-            .fromTo(this.elements.subTitles.second, 1.6, {opacity: 0}, {opacity: 1}, 'start+=0.7')
-            .fromTo(this.elements.projNumber, 1.6, {y: 100, opacity: 0}, {ease: 'cubic-bezier', y: 0, opacity: 1}, 'start');
-        return tl;
+    setup() {
+        this.anim.pointerTl.play('start');
     }
 
-    defaultTl() {
+    pointerTl() {
         const tl = new gsap.timeline();
         tl.addLabel('start')
-            .to(this.elements.image, 1.2, {ease: 'cubic-bezier', scaleY: 1}, 'start')
-            .to(this.elements.imageWrapper, 1.2, {ease: 'cubic-bezier', scaleY: 1}, 'start')
-            .to(this.elements.projNumber, 1.2, {ease: 'cubic-bezier', y: 0, opacity: 1}, 'start')
-            .to(this.elements.mainTitles.first, 1.2, {ease: 'cubic-bezier', x: -35, opacity: 1}, 'start')
-            .to(this.elements.mainTitles.second, 1.2, {ease: 'cubic-bezier', x: 35, opacity: 1}, 'start')
-            .to('.fadingElement', 0.3, {opacity: 1}, 'start');
-        return tl.pause();
-    }
-
-    readyTl() {
-        const tl = new gsap.timeline();
-        tl.addLabel('start')
-            .to(this.elements.image, 1.2, {ease: 'cubic-bezier', scaleY: 1.176}, 'start')
-            .to(this.elements.imageWrapper, 1.2, {ease: 'cubic-bezier', scaleY: 0.85}, 'start')
-            .to(this.elements.projNumber, 1.2, {ease: 'cubic-bezier', y: 100, opacity: 0}, 'start')
-            .to(this.elements.mainTitles.first, 0.8, {ease: 'cubic-bezier', x: -200, opacity: 0}, 'start')
-            .to(this.elements.mainTitles.second, 0.8, {ease: 'cubic-bezier', x: 200, opacity: 0}, 'start')
-            .to('.fadingElement', 0.3, {opacity: 0}, 'start');
+            .set(this.elements.pointer.text, {opacity: 0, y: '8px'})
+            .set(this.elements.pointer.line, {transformOrigin: 'right center'})
+            .fromTo(this.elements.pointer.line, {scaleX: 0}, {ease: Power3.easeOut, scaleX: 1, duration: 0.7}, 'start+=0.3')
+            .to(this.elements.pointer.text, {ease: Power3.easeOut, opacity: 1, y: '0', duration: 0.4}, 'start+=0.8');
         tl.pause();
         return tl;
     }
 
-    parseNextWork(parsedRoot) {
-        return new LandingWork(
-            parsedRoot.querySelector('#mainContainer').getAttribute('data-proj-index'),
-            {
-                first: {
-                    value: parsedRoot.querySelector('#mainTitleFirst').innerHTML,
-                    posClass: parsedRoot.querySelector('#mainContainer').getAttribute('data-headers-class')
-                },
-                sec: parsedRoot.querySelector('#mainTitleSec').innerHTML
-            },
-            {
-                first: {
-                    value: parsedRoot.querySelector('#firstSubtitle').innerHTML,
-                    color: parsedRoot.querySelector('#firstSubtitle').getAttribute('data-color'),
-                    posClass: parsedRoot.querySelector('#mainContainer').getAttribute('data-headers-class')
-                },
-                sec: parsedRoot.querySelector('#secSubtitle').innerHTML
-            },
-            parsedRoot.querySelector('#image').getAttribute('src'),
-            parsedRoot.querySelector('#dragInput').getAttribute('data-work-url'),
-            parsedRoot.querySelector('#showPreview').getAttribute('href')
-        );
-    }
-
-    update(work) {
-        const currentPosClass = this.elements.landingContainer.getAttribute('data-headers-class');
-        this.elements.landingContainer.dataset.headersClass = work.mainTitles.first.posClass;
-        
-        this.elements.projIndex.innerHTML = `${work.projIndex}/4`;
-        this.elements.projNumber.innerHTML = `project no. ${work.projIndex}`;
-        this.elements.image.src = work.imageSrc;
-        this.elements.mainTitles.first.innerHTML = work.mainTitles.first.value;
-        this.elements.mainTitles.container.classList.remove(`content__menuSection__mainHeader--${currentPosClass}`);
-        this.elements.mainTitles.container.classList.add(`content__menuSection__mainHeader--${work.mainTitles.first.posClass}`);
-        this.elements.mainTitles.second.innerHTML = work.mainTitles.sec;
-        this.elements.subTitles.first.innerHTML = work.subTitles.first.value;
-        this.elements.subTitles.first.classList.remove(`content__menuSection__subHeader--${currentPosClass}`);
-        this.elements.subTitles.first.classList.add(`content__menuSection__subHeader--${work.subTitles.first.posClass}`);
-        this.elements.subTitles.first.style.color = work.subTitles.first.color;
-        this.elements.subTitles.second.innerHTML = work.subTitles.sec;
-        this.elements.dragInput.dataset.workUrl = work.dragUrls;
-        this.elements.showPreviewButton.href = work.previewUrl;
+    showFullVideoTl() {
+        const tl = new gsap.timeline();
+        const scale = 4;
+        tl.addLabel('start')
+            .set([this.elements.teaserVideo, this.elements.mainNav.elements.logo, this.elements.mainNav.elements.btn], {pointerEvents: 'none'})
+            .addLabel('menuHiding')
+            .to(this.elements.pointer.text, 0.2, {ease: Power3.easeOut, opacity: 0, y: '8px'}, 'menuHiding')
+            .fromTo(this.elements.pointer.line, 0.6, {scaleX: 1}, {ease: Power3.easeOut, scaleX: 0})
+            .to([this.elements.mainNav.elements.logo, this.elements.mainNav.elements.btn], 1.2, {ease: Power3.easeOut, opacity: 0}, 'menuHiding')
+            .to(this.elements.videoContainer, 0.6, {ease: 'ease', scale: scale}, 'menuHiding+=0.8')
+            .to([this.elements.fullVideoWrapper, this.elements.teaserVideo], 0.55, {ease: 'ease', scale: (1 / scale) + 0.005}, 'menuHiding+=0.8')
+            .to(this.elements.teaserVideo, 0.55, {ease: 'ease', opacity: 0}, 'menuHiding+=0.8')
+            .addLabel('playVideo')
+            .add(() => this.elements.fullVideo.play())
+            .to(this.elements.skipBtn, 0.4, {ease: Power3.easeOut, y: 0}, 'playVideo+=0.4');
+        tl.pause();
+        return tl;
     }
 }

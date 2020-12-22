@@ -1,7 +1,7 @@
 @import '../main';
 @import '../fonts/MonoSpec';
 @import '../fonts/Acumin';
-@import './elements/navbar';
+@import './elements/mainNav';
 @import './elements/landing';
 @import './elements/dragSlider';
 @import './elements/typeFaceExamples';
@@ -9,6 +9,8 @@
 @import './elements/imageVisual';
 @import './elements/doubleImageVisual';
 @import './elements/archive';
+@import '../fonts/RockwellStd';
+@import '../elements//mainNav';
 
 .landingSection {
     .landing__logoWrapper {
