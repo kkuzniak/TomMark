@@ -1,5 +1,5 @@
-module.exports = {
-    plugin: {
-        'autoprefixer': {}
+export default {
+    plugins: {
+        autoprefixer: {}
     }
 }
