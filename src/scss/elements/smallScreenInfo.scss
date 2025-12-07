@@ -1,14 +1,6 @@
+@import '../variables.scss';
+
 .smallScreenInfo {
-    @media (max-width: 767px) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    @media (max-height: 620px) {
-        display: flex;
-        justify-content: center;
-        align-items: center; 
-    }
     display: none;
     position: fixed;
     width: 100%;
@@ -17,6 +9,18 @@
     top: 0;
     left: 0;
     z-index: 999;
+
+    @media (max-width: 767px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    @media (max-height: 620px) {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
 
     &__wrapper {
         max-width: 500px;

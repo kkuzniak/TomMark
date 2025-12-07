@@ -1,1 +1,1 @@
-import '../../scss/works/royalStar.scss';
+import '../../scss/pages/royalStar.scss';

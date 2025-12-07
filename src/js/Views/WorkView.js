@@ -1,6 +1,5 @@
 import gsap from 'gsap';
 import CustomEase from 'gsap/CustomEase';
-import { parse } from 'node-html-parser';
 import Work from '../Models/Work';
 import WorkController from '../Controllers/WorkController';
 import Animation from '../animation';
@@ -40,7 +39,7 @@ export default class WorkView {
         const loaderTl = (new Animation()).loaderTl();
         loaderTl.play('start');
         window.addEventListener('load', () => {
-           setTimeout(() => {
+            setTimeout(() => {
                 loader.classList.remove('pageLoader--shown');
                 loader.classList.add('pageLoader--hidden');
             }, 1000);
@@ -65,7 +64,10 @@ export default class WorkView {
                     this.timelines.defaultTl.play('start');
                 } else {
                     this.workController.getNextWork(currentLink).then(body => {
-                        const nextWork = this.workController.parseNextWork(parse(body));
+                        const parser = new DOMParser();
+                        const parsedBody = parser.parseFromString(body, 'text/html');
+                        const nextWork = this.workController.parseNextWork(parsedBody);
+
                         history.pushState(JSON.stringify(nextWork), null, currentLink);
                         this.update(nextWork);
                         this.timelines.readyTl.pause();

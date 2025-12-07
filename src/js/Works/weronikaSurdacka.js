@@ -1,1 +1,2 @@
-import '../../scss/works/weronikaSurdacka.scss';
+import '../../scss/pages/weronikaSurdacka.scss';
+import '../../scss/elements/smallScreenInfo.scss';
