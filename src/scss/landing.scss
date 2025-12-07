@@ -1,8 +1,8 @@
-@import '../main';
-@import '../elements/smallScreenInfo';
-@import '../fonts/MonoSpec';
-@import '../elements//mainNav';
-@import '../fonts/RockwellStd';
+@import './main';
+@import './elements/smallScreenInfo';
+@import './fonts/MonoSpec';
+@import './elements//mainNav';
+@import './fonts/RockwellStd';
 
 .mainNav {
     max-width: 1560px;

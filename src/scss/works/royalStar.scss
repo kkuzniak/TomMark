@@ -3,16 +3,16 @@
 @import '../fonts/Dylan';
 @import '../fonts/Acumin';
 @import '../fonts/RockwellStd';
-@import './elements/mainNav';
-@import './elements/landing';
-@import './elements/dragSlider';
-@import './elements/typeFaceExamples';
-@import './elements/typeFace';
-@import './elements/fullWidthImage';
-@import './elements/imageVisual';
-@import './elements/doubleImageVisual';
-@import './elements/nextProject';
-@import '../elements//mainNav';
+@import '../works/elements/mainNav';
+@import '../works/elements/landing';
+@import '../works/elements/dragSlider';
+@import '../works/elements/typeFaceExamples';
+@import '../works/elements/typeFace';
+@import '../works/elements/fullWidthImage';
+@import '../works/elements/imageVisual';
+@import '../works/elements/doubleImageVisual';
+@import '../works/elements/nextProject';
+@import '../works/elements//mainNav';
 
 .landingSection {
     .landing__logoWrapper {

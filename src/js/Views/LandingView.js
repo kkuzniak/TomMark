@@ -1,6 +1,5 @@
 import gsap, {Power3} from 'gsap';
 import MainNav from './MainNavView';
-import '../Plugins/customEases';
 
 export default class LandingView {
     constructor() {

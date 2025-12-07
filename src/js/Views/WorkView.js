@@ -1,9 +1,9 @@
 import gsap from 'gsap';
-import CustomEase from '../Plugins/CustomEase.min';
+import CustomEase from 'gsap/CustomEase';
 import { parse } from 'node-html-parser';
 import Work from '../Models/Work';
 import WorkController from '../Controllers/WorkController';
-import anim from '../anim';
+import Animation from '../animation';
 
 export default class WorkView {
     constructor() {
@@ -37,7 +37,7 @@ export default class WorkView {
         this.workController = new WorkController();
         this.events();
         const loader = document.querySelector('.pageLoader');
-        const loaderTl = (new anim()).loaderTl();
+        const loaderTl = (new Animation()).loaderTl();
         loaderTl.play('start');
         window.addEventListener('load', () => {
            setTimeout(() => {

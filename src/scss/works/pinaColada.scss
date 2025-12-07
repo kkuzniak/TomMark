@@ -1,6 +1,6 @@
 @import '../main';
-@import '../fonts/MonoSpec';
-@import '../fonts/Acumin';
+@import './fonts/MonoSpec';
+@import './fonts/Acumin';
 @import './elements/mainNav';
 @import './elements/landing';
 @import './elements/dragSlider';
@@ -9,7 +9,7 @@
 @import './elements/imageVisual';
 @import './elements/doubleImageVisual';
 @import './elements/archive';
-@import '../fonts/RockwellStd';
+@import './fonts/RockwellStd';
 @import '../elements//mainNav';
 
 .landingSection {

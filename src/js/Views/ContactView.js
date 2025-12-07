@@ -1,6 +1,6 @@
 import gsap from 'gsap';
-import CustomEase from '../Plugins/CustomEase.min';
-import Anim from '../anim';
+import CustomEase from 'gsap/CustomEase';
+import Animation from '../animation';
 import ContactController from '../Controllers/ContactController';
 
 export default class ContactView {
@@ -19,7 +19,7 @@ export default class ContactView {
             submitButton: document.getElementById('submitButton')
         };
         this.timelines = {
-            loaderTl: (new Anim()).loaderTl(),
+            loaderTl: (new Animation()).loaderTl(),
             submittedTl: this.submittedTl(),
             switchToLoaderTl: this.switchToLoaderTl()
         };
