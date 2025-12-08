@@ -1,6 +1,6 @@
 import gsap, {Power1, Power3} from 'gsap';
 
-export default class Anim {
+export default class Animation {
     constructor() {}
 
     loaderTl() {

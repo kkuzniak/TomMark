@@ -3,15 +3,16 @@
 @import '../fonts/MicrosoftYiBaiti';
 @import '../fonts/Dylan';
 @import '../fonts/RockwellStd';
-@import './elements/mainNav';
-@import './elements/landing';
-@import './elements/dragSlider';
-@import './elements/typeFaceExamples';
-@import './elements/typeFace';
-@import './elements/fullWidthImage';
-@import './elements/imageVisual';
-@import './elements/nextProject';
 @import '../elements//mainNav';
+@import '../elements/smallScreenInfo';
+@import './worksElements/mainNav';
+@import './worksElements/dragSlider';
+@import './worksElements/typeFaceExamples';
+@import './worksElements/typeFace';
+@import './worksElements/fullWidthImage';
+@import './worksElements/imageVisual';
+@import './worksElements/nextProject';
+@import './worksElements/landing';
 
 .landingSection {
     .landing__logoWrapper {
