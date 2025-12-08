@@ -8,7 +8,7 @@ export default class Navbar {
             self: document.querySelector('.mainNav'),
             navs: Array.from(document.querySelectorAll('.mainNav > *'))
         };
-        this.events();
+        this.scrollEvents();
     }   
 
     scrollEvents() {
