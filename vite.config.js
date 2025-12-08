@@ -9,6 +9,7 @@ const __dirname = dirname(__filename);
 export default defineConfig({
   root: 'src',
   publicDir: '../public',
+  base: '/TomMark',
   build: {
     outDir: '../dist',
     emptyOutDir: true,
