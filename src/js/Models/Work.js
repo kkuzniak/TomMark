@@ -22,7 +22,7 @@ export default class Work {
             sec: 'based:<br>warsaw,<br>poland'
         };
         this.imageSrc = '/videos/land-1.mp4';
-        this.dragUrls = '["self","/work_2.html","/work_3.html","/work_4.html"]';
+        this.dragUrls = '["self","/work_2","/work_3","/work_4"]';
         this.previewUrl = '/work/preview/weronika-surdacka';
     }
 }

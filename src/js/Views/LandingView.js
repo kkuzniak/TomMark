@@ -1,6 +1,5 @@
 import gsap, {Power3} from 'gsap';
 import MainNav from './MainNavView';
-import '../Plugins/customEases';
 
 export default class LandingView {
     constructor() {
@@ -63,7 +62,12 @@ export default class LandingView {
             .to([this.elements.fullVideoWrapper, this.elements.teaserVideo], 0.55, {ease: 'ease', scale: (1 / scale) + 0.005}, 'menuHiding+=0.8')
             .to(this.elements.teaserVideo, 0.55, {ease: 'ease', opacity: 0}, 'menuHiding+=0.8')
             .addLabel('playVideo')
-            .add(() => this.elements.fullVideo.play())
+            .add(() => {
+                this.elements.fullVideo.muted = false;
+                this.elements.fullVideo.volume = 1;
+                this.elements.fullVideo.play();
+
+            })
             .to(this.elements.skipBtn, 0.4, {ease: Power3.easeOut, y: 0}, 'playVideo+=0.4');
         tl.pause();
         return tl;

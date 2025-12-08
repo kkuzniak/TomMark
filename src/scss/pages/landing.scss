@@ -1,8 +1,8 @@
+@import '../fonts/MonoSpec';
+@import '../fonts/RockwellStd';
 @import '../main';
 @import '../elements/smallScreenInfo';
-@import '../fonts/MonoSpec';
 @import '../elements//mainNav';
-@import '../fonts/RockwellStd';
 
 .mainNav {
     max-width: 1560px;
@@ -92,7 +92,7 @@
 
         &__wrapper {
             width: 100%;
-            height: 100%;
+            aspect-ratio: 1/1;
             max-width: 100vw;
             max-height: 100vh;
             display: flex;

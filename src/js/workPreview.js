@@ -1,14 +1,14 @@
-// import Navbar from './Views/WorkPage/Navbar';
+import Navbar from './Views/WorkPage/Navbar';
 import MainNavView from './Views/MainNavView';
 import SliderView from './Views/WorkPage/SliderView';
-import anim from './anim';
+import Animation from './animation';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // new Navbar();
+    new Navbar();
     new SliderView();
     new MainNavView({withScrollEvents: true});
     const loader = document.querySelector('.pageLoader');
-    const loaderTl = (new anim()).loaderTl();
+    const loaderTl = (new Animation()).loaderTl();
     loaderTl.play('start');
     window.addEventListener('load', () => {
         setTimeout(() => {
